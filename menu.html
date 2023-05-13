@@ -1,0 +1,96 @@
+﻿<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet">
+    <link rel="icon" href="Capture.PNG">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+
+        input:focus {
+            outline: none;
+        }
+
+        ::placeholder {
+            font-family: 'Raleway', sans-serif;
+            color: rgb(243, 156, 18);
+        }
+
+        #b1 {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid rgb(243, 156, 18);
+            padding: 10px 30px;
+            color: rgb(243, 156, 18);
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.25s;
+            border-radius: 5px;
+        }
+
+            #b1:hover {
+                color: white;
+                background: rgb(243, 156, 18);
+            }
+
+        body {
+            background-color: rgb(21, 21, 21);
+            border: 2px solid rgb(243, 156, 18);
+            border-radius: 20px;
+            background-image: url('background.jpg');
+            background-size: cover;
+        }
+        .center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -300%);
+            text-align: center;
+        }
+        .button {
+            color: white;
+            background: transparent;
+            display: block;
+            position: absolute;
+            border: 2px solid rgb(243, 156, 18);
+            width: 40vw;
+            height: 40vw;
+            line-height: 40vw;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 100%;
+
+        }
+        @keyframes fadein {
+            from {
+                opacity: 0;
+                transform: scale(85%);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        .fadein {
+            animation-name: fadein;
+            animation-duration: 1s;
+        }
+    </style>
+    <title>
+        Launch Zone
+    </title>
+</head>
+<body>
+    <div class="center">
+        <img src="Capture.PNG" style="width: 100%; height: 100%;"></img>
+            <div class="button fadein" style=" top: 110; left: -60;"> Profile </div>
+            <div class="button fadein" style=" top: 210; left: 100;"> Feed </div>
+            <div class="button fadein" style=" top: 350; left: -30;"> Chat Zone </div>
+
+
+    </div>
+</body>
+<html>
