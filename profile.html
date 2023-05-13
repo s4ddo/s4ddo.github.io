@@ -44,14 +44,18 @@
             background-size: cover;
             overflow: hidden;
         }
+
         .center {
-                text-align:center;
-                padding-top: 10%;
+            text-align: center;
+            padding-top: 10%;
         }
+
         .button {
             transition: all 0.25s;
             color: white;
-            background: transparent;
+            background-image: url('profile.png');
+            background-color: rgb(243, 156, 18);
+            background-size: contain;
             display: block;
             border: 2px solid rgb(243, 156, 18);
             width: 40vw;
@@ -59,11 +63,8 @@
             line-height: 40vw;
             font-family: 'Montserrat', sans-serif;
             border-radius: 100%;
-
         }
-            .button:hover {
-                background: rgb(243, 156, 18);
-            }
+
         @keyframes fadein {
             from {
                 opacity: 0;
@@ -75,10 +76,12 @@
                 transform: none;
             }
         }
+
         .fadein {
             animation-name: fadein;
             animation-duration: 1s;
         }
+
         @keyframes fadein2 {
             from {
                 opacity: 0;
@@ -95,15 +98,17 @@
             animation-name: fadein2;
             animation-duration: 1s;
         }
+
         img {
-            width: 80%;
+
+            width: 50%;
         }
+
         @media only screen and (min-width: 1224px) {
-            img{
+            img {
                 width: 10%;
             }
         }
-      a{text-decoration: none}
     </style>
     <title>
         Launch Zone
@@ -112,10 +117,9 @@
 <body>
     <div class="center">
         <img class="fadein2" src="Capture.PNG" style=""></img>
-        <div style="padding: 5% 10% 10% 10%; ">
-            <a href="profile.html" class="button fadein" style="clear: left" > Profile </a>
-            <div class="button fadein" style="float: right"> Feed </div>
-            <div class="button fadein" style="float: left"> Chat Zone </div>
+        <div style=" padding: 10% 10% 10% 10%; ">
+            <div class="button fadein" style="margin: 0 auto"> </div>'
+            <p style="color: white; font-family: 'Montserrat', sans-serif; ">Username</p>
         </div>
 
 
