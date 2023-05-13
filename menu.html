@@ -42,19 +42,16 @@
             border-radius: 20px;
             background-image: url('background.jpg');
             background-size: cover;
+            overflow: hidden;
         }
         .center {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -300%);
-            text-align: center;
+                text-align:center;
+                padding-top: 20%;
         }
         .button {
             color: white;
             background: transparent;
             display: block;
-            position: absolute;
             border: 2px solid rgb(243, 156, 18);
             width: 40vw;
             height: 40vw;
@@ -94,6 +91,15 @@
             animation-name: fadein2;
             animation-duration: 1s;
         }
+        img {
+            width: 80%;
+        }
+        @media only screen and (min-width: 1224px) {
+            img{
+                width: 10%;
+            }
+        }
+       
     </style>
     <title>
         Launch Zone
@@ -101,10 +107,12 @@
 </head>
 <body>
     <div class="center">
-        <img class="fadein2" src="Capture.PNG" style="width: 100%; height: 100%;"></img>
-            <div class="button fadein" style=" top: 110; left: -60;"> Profile </div>
-            <div class="button fadein" style=" top: 210; left: 100;"> Feed </div>
-            <div class="button fadein" style=" top: 350; left: -30;"> Chat Zone </div>
+        <img class="fadein2" src="Capture.PNG" style=""></img>
+        <div style="padding: 10% 10% 10% 10%; ">
+            <div class="button fadein" style="clear: left"> Profile </div>
+            <div class="button fadein" style="float: right"> Feed </div>
+            <div class="button fadein" style="float: left"> Chat Zone </div>
+        </div>
 
 
     </div>
