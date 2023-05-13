@@ -1,0 +1,126 @@
+﻿<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300" rel="stylesheet">
+<link rel="icon" href="Capture.PNG">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+input:focus{
+	outline:none;
+}
+    ::placeholder {
+        font-family: 'Raleway', sans-serif;
+        color: rgb(243, 156, 18);
+    }
+    #username, #password {
+        font-family: 'Montserrat', sans-serif;
+        color: rgb(243, 156, 18);
+        border: 2px solid rgb(243, 156, 18);
+        text-decoration: none;
+        padding: 10px 30px;
+        border-radius: 5px;
+        background-color: transparent;
+        transition: all 0.25s;
+    }
+    #username:focus, #password:focus {
+        color: white;
+        background: rgb(243, 156, 18);
+    }
+    #b1 {
+        display: inline-block;
+        background: transparent;
+        border: 2px solid rgb(243, 156, 18);
+        padding: 10px 30px;
+        color: rgb(243, 156, 18);
+        font-family: 'Montserrat', sans-serif;
+        transition: all 0.25s;
+        border-radius: 5px;
+    }
+    #b1:hover {
+        color: white;
+        background: rgb(243, 156, 18);
+    }
+    #p1 {
+        color: rgb(243, 156, 18);
+        font-family: 'Montserrat', sans-serif;
+    }
+    body {
+        background-color: rgb(21, 21, 21);
+        border: 2px solid rgb(243, 156, 18);
+        border-radius: 20px;
+    }
+    .fa {
+        display:inline-block;
+        padding: 10px;
+        font-size: 20px;
+        width: 20px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+        border-radius: 50%;
+    }
+
+        .fa:hover {
+            opacity: 0.7;
+        }
+    .fa-facebook {
+        background: rgb(243, 156, 18);
+        color: white;
+    }
+    .fa-twitter {
+        background: rgb(243, 156, 18);
+        color: white;
+    }
+    .fa-google {
+        background: rgb(243, 156, 18);
+        color: white;
+    }
+    .fa-linkedin {
+        background: rgb(243, 156, 18);
+        color: white;
+    }
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align:center;
+}
+.animated{
+	animation-duration:1s;
+	animation-fill-mode:none;
+}
+</style>
+<title>
+	Launch Zone
+</title>
+</head>
+<body>
+    <div class="center">
+        <img src="Capture.PNG" style="width: 100%; height: 100%;"></img>
+        <h1 style="color: white; font-family:'Montserrat', sans-serif; text-align: left; margin-bottom: 5;">Login</h1>
+        <form>
+            <input type="text" id="username" placeholder="Username">
+            </br>
+            </br>
+            <input type="password" id="password" placeholder="Password">
+            </br>	</br>
+            <div id="b1" type="button" onclick="getInfo()">Login</div>
+        </form>
+        <p id="p1"></p>
+        <div>
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-linkedin"></a>
+            <a href="#" class="fa fa-google"></a>
+
+        </div>
+    </div>
+<script type="text/javascript" src="Loginscript.js"></script>
+</body>
+<html>
