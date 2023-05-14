@@ -31,7 +31,7 @@
             border-radius: 5px;
         }
 
-            #b1:hover {
+            #b1:hover, .buttons:hover, .buttons:focus {
                 color: white;
                 background: rgb(243, 156, 18);
             }
@@ -142,6 +142,27 @@
             border: 2px solid rgb(243, 156, 18);
             box-sizing: border-box;
         }
+        .buttons {
+            transition: all 0.25s;
+            user-select: none;
+            display: inline-block;
+            color: white;
+            background: transparent;
+            position: absolute;
+            width: 15vw;
+            height: 15vw;
+            line-height: 14vw;
+            margin: 10;
+            float: left;
+            border-radius: 50%;
+            font-family: 'Montserrat', sans-serif;
+            border: 2px solid rgb(243, 156, 18);
+            box-sizing: border-box;
+        }
+        a, a:hover, a:focus, a:active {
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent !important;
+        }
     </style>
     <title>
         Launch Zone
@@ -149,6 +170,8 @@
 </head>
 <body>
     <div class="center">
+        <a href="menu.html"class="buttons" style=" left: 0;"><</a>
+        <a href="index.html"class="buttons" style=" right: 0; font-size: 50%;">Log Out</a>
         <img class="fadein2" src="Capture.PNG" style=""></img>
         <div style=" padding: 10% 10% 10% 10%; ">
             <div class="button fadein" style="margin: 0 auto"> </div>
