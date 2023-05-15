@@ -43,17 +43,17 @@
             background-image: url('background.jpg');
             background-size: cover;
             overflow: hidden;
-            height:100%;
+            height: 100%;
             box-sizing: border-box;
             margin: 0;
         }
 
         .center {
-            position:relative;
-            display:block;
+            position: relative;
+            display: block;
             text-align: center;
             box-sizing: border-box;
-            height:100%;
+            height: 100%;
             padding-top: 10%;
         }
 
@@ -105,6 +105,7 @@
             animation-name: fadein2;
             animation-duration: 1s;
         }
+
         @keyframes fadein3 {
             from {
                 opacity: 0;
@@ -121,8 +122,8 @@
             animation-name: fadein3;
             animation-duration: 1s;
         }
-        img {
 
+        img {
             width: 50%;
         }
 
@@ -131,39 +132,41 @@
                 width: 10%;
             }
         }
+
         #companies {
             border-radius: 20px;
             background: rgba(0,0,0, 0.5);
             display: block;
-            position: absolute;
             width: 100%;
             height: 45%;
             padding: 10 0 0 10;
-            bottom: 0%;
             box-sizing: border-box;
-            text-align: left;
+            text-align: center;
             border-top: 2px solid rgb(243, 156, 18);
         }
+
         .company {
             transition: all 0.25s;
             user-select: none;
             display: inline-block;
             color: white;
             background: rgba(243, 156, 18,0.5);
-            width: 30vw;
-            height: 30vw;
+            width: fit-content;
+            height: fit-content;
             float: left;
-            line-height: 30vw;
-            text-align:center;
+            text-align: center;
             border-radius: 20px;
             margin: 3;
             font-family: 'Montserrat', sans-serif;
             border: 2px solid rgb(243, 156, 18);
             box-sizing: border-box;
+            padding:5;
         }
-            .company:hover, .company:focus{
+
+            .company:hover, .company:focus {
                 background: rgba(243, 156, 18,1);
             }
+
         .buttons {
             transition: all 0.25s;
             user-select: none;
@@ -181,12 +184,14 @@
             border: 2px solid rgb(243, 156, 18);
             box-sizing: border-box;
         }
+
         a, a:hover, a:focus, a:active {
             text-decoration: none;
             -webkit-tap-highlight-color: transparent !important;
         }
-        #posts{
-            display:none;
+
+        #posts {
+            display: none;
         }
     </style>
     <title>
@@ -194,44 +199,46 @@
     </title>
 </head>
 <body>
-    <div class="center">
-        <a href="menu.html"class="buttons" style=" left: 0;"><</a>
-        <a href="index.html"class="buttons" style=" right: 0; font-size: 50%;">Log Out</a>
-        <img class="fadein2" src="Capture.PNG" style=""></img>
-        <div style=" padding: 10% 10% 10% 10%; ">
-            <div class="button fadein" style="margin: 0 auto"> </div>
-            <p style="color: white; margin:10 0 5 0;font-family: 'Montserrat', sans-serif; ">Guest</p>
-            <p style="color: white; font-family: 'Raleway', sans-serif; margin: 0"> Followers: <b>1</b> || Following: <b>1</b></p>
+    <div class="center" style="overflow:scroll;">
+        <div class="fadein2" style="margin-bottom:30" >
+            <a href="menu.html" class="buttons" style=" right: 0;"><</a>
+            <h1 class="" style="color: white; font-family: 'Montserrat', sans-serif; text-align: left; margin: 0 0 0 20; font-size: 300%; ">Connect</h1>
         </div>
         <div class="fadein3" id="companies">
-            <p id="portfoliolabel" onclick="openPortfolio()"style="display:inline-block;color: white; font-family: 'Montserrat', sans-serif; margin:10 0 5 10; font-size: 20">Portfolio</p>
-            <p id="postslabel" onclick="openPosts()"style="display: inline-block; color: gray; font-family: 'Montserrat', sans-serif; margin: 10 0 5 10; font-size: 20">Posts</p>
-            </br>
-            <div id="portfolio">
-                <a href="company1.html" class="company">Company 1</a>
-                <div onclick="location.href='newcompany.html';" class="company" style="background: transparent; border: 2px dashed rgb(243, 156, 18)">+</div>
-            </div>
-            <div id="posts">
-                <a class="company" style="background-image: url('postpic.png');background-size: cover; "></a>
-                <div onclick="location.href='profile_newpost.html';" class="company" style="background: transparent; border: 2px dashed rgb(243, 156, 18)">+</div>
-            </div>
+            <a href="profile.html" class="company">
+                <div class="button fadein" style="margin: 0 auto"> </div>
+                <p style="color: white; margin:10 0 5 0;font-family: 'Montserrat', sans-serif; ">Guest</p>
+                <div style="display:inline-block; background: rgba(41, 247, 118,0.5); border: 2px solid rgb(243, 156, 18); padding: 10 30; border-radius: 20px;">Connect</div>
+            </a>
+            <a href="profile.html" class="company">
+                <div class="button fadein" style="margin: 0 auto"> </div>
+                <p style="color: white; margin:10 0 5 0;font-family: 'Montserrat', sans-serif; ">Guest</p>
+                <div style="display:inline-block; background: rgba(41, 247, 118,0.5); border: 2px solid rgb(243, 156, 18); padding: 10 30; border-radius: 20px;">Connect</div>
+            </a>
+            <a href="profile.html" class="company">
+                <div class="button fadein" style="margin: 0 auto"> </div>
+                <p style="color: white; margin:10 0 5 0;font-family: 'Montserrat', sans-serif; ">Guest</p>
+                <div style="display:inline-block; background: rgba(41, 247, 118,0.5); border: 2px solid rgb(243, 156, 18); padding: 10 30; border-radius: 20px;">Connect</div>
+            </a>
+            <a href="profile.html" class="company">
+                <div class="button fadein" style="margin: 0 auto"> </div>
+                <p style="color: white; margin:10 0 5 0;font-family: 'Montserrat', sans-serif; ">Guest</p>
+                <div style="display:inline-block; background: rgba(41, 247, 118,0.5); border: 2px solid rgb(243, 156, 18); padding: 10 30; border-radius: 20px;">Connect</div>
+            </a>
+            <a href="profile.html" class="company">
+                <div class="button fadein" style="margin: 0 auto"> </div>
+                <p style="color: white; margin:10 0 5 0;font-family: 'Montserrat', sans-serif; ">Guest</p>
+                <div style="display:inline-block; background: rgba(41, 247, 118,0.5); border: 2px solid rgb(243, 156, 18); padding: 10 30; border-radius: 20px;">Connect</div>
+            </a>
+            <a href="profile.html" class="company">
+                <div class="button fadein" style="margin: 0 auto"> </div>
+                <p style="color: white; margin:10 0 5 0;font-family: 'Montserrat', sans-serif; ">Guest</p>
+                <div style="display:inline-block; background: rgba(41, 247, 118,0.5); border: 2px solid rgb(243, 156, 18); padding: 10 30; border-radius: 20px;">Connect</div>
+            </a>
         </div>
-
-
     </div>
+
     <script>
-        function openPosts() {
-            document.getElementById('postslabel').style.color = "white";
-            document.getElementById('portfoliolabel').style.color = "gray";
-            document.getElementById('portfolio').style.display = "none";
-            document.getElementById('posts').style.display = "block";
-        }
-        function openPortfolio() {
-            document.getElementById('postslabel').style.color = "gray";
-            document.getElementById('portfoliolabel').style.color = "white";
-            document.getElementById('portfolio').style.display = "block";
-            document.getElementById('posts').style.display = "none";
-        }
     </script>
 </body>
 <html>

@@ -10,7 +10,25 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+        #username, #password {
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            border: 2px solid rgba(243, 156, 18, 0);
+            text-decoration: none;
+            padding: 10px 30px;
+            border-radius: 5px;
+            background-color: transparent;
+            transition: all 0.25s;
+            width: 80%;
+            display:inline-block;
+            font-size: 100%;
+        }
+            #username::placeholder {
+                color: white;
+                font-family: 'Montserrat', sans-serif;
+            }
         input:focus {
             outline: none;
         }
@@ -24,11 +42,14 @@
             display: inline-block;
             background: transparent;
             border: 2px solid rgb(243, 156, 18);
-            padding: 10px 30px;
-            color: rgb(243, 156, 18);
+            padding: 10;
+            color: white;
+            height: 100%;
+            width: 15%;
             font-family: 'Montserrat', sans-serif;
             transition: all 0.25s;
-            border-radius: 5px;
+            border-radius: 20px;
+            box-sizing: border-box;
         }
 
             #b1:hover, .buttons:hover, .buttons:focus {
@@ -43,18 +64,18 @@
             background-image: url('background.jpg');
             background-size: cover;
             overflow: hidden;
-            height:100%;
+            height: 100%;
             box-sizing: border-box;
             margin: 0;
         }
 
         .center {
-            position:relative;
-            display:block;
+            position: relative;
+            display: block;
             text-align: center;
             box-sizing: border-box;
-            height:100%;
-            padding-top: 10%;
+            height: 100%;
+            padding-top: 5%;
         }
 
         .button {
@@ -105,6 +126,7 @@
             animation-name: fadein2;
             animation-duration: 1s;
         }
+
         @keyframes fadein3 {
             from {
                 opacity: 0;
@@ -121,8 +143,8 @@
             animation-name: fadein3;
             animation-duration: 1s;
         }
-        img {
 
+        img {
             width: 50%;
         }
 
@@ -131,39 +153,39 @@
                 width: 10%;
             }
         }
+
         #companies {
-            border-radius: 20px;
-            background: rgba(0,0,0, 0.5);
+            background: transparent;
             display: block;
             position: absolute;
             width: 100%;
-            height: 45%;
-            padding: 10 0 0 10;
+            height: 15%;
+            padding: 10 10 0 10;
             bottom: 0%;
             box-sizing: border-box;
-            text-align: left;
-            border-top: 2px solid rgb(243, 156, 18);
+            text-align: center;
         }
+
         .company {
             transition: all 0.25s;
             user-select: none;
             display: inline-block;
             color: white;
-            background: rgba(243, 156, 18,0.5);
-            width: 30vw;
-            height: 30vw;
-            float: left;
-            line-height: 30vw;
-            text-align:center;
+            background: transparent;
+            width: 15vw;
+            height: 15vw;
+            line-height: 15vw;
             border-radius: 20px;
-            margin: 3;
+            margin: 0 auto;
             font-family: 'Montserrat', sans-serif;
             border: 2px solid rgb(243, 156, 18);
             box-sizing: border-box;
         }
-            .company:hover, .company:focus{
+
+            .company:hover, .company:focus {
                 background: rgba(243, 156, 18,1);
             }
+
         .buttons {
             transition: all 0.25s;
             user-select: none;
@@ -173,20 +195,38 @@
             position: absolute;
             width: 15vw;
             height: 15vw;
-            line-height: 14vw;
+            line-height: 14.5vw;
             margin: 10;
+            margin-top: 0;
             float: left;
             border-radius: 50%;
             font-family: 'Montserrat', sans-serif;
             border: 2px solid rgb(243, 156, 18);
             box-sizing: border-box;
         }
+
         a, a:hover, a:focus, a:active {
             text-decoration: none;
             -webkit-tap-highlight-color: transparent !important;
         }
-        #posts{
-            display:none;
+
+        #header {
+            padding-bottom: 20px;
+        }
+
+        .post {
+            display: inline-block;
+            width: fit-content;
+            height: fit-content;
+            padding: 10;
+            background: transparent;
+            margin: 10;
+            color: white;
+            border-radius: 20px;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            border: 2px solid rgb(243, 156, 18);
+
         }
     </style>
     <title>
@@ -195,43 +235,26 @@
 </head>
 <body>
     <div class="center">
-        <a href="menu.html"class="buttons" style=" left: 0;"><</a>
-        <a href="index.html"class="buttons" style=" right: 0; font-size: 50%;">Log Out</a>
-        <img class="fadein2" src="Capture.PNG" style=""></img>
-        <div style=" padding: 10% 10% 10% 10%; ">
-            <div class="button fadein" style="margin: 0 auto"> </div>
-            <p style="color: white; margin:10 0 5 0;font-family: 'Montserrat', sans-serif; ">Guest</p>
-            <p style="color: white; font-family: 'Raleway', sans-serif; margin: 0"> Followers: <b>1</b> || Following: <b>1</b></p>
+        <div class="fadein2" id="header">
+            <a href="profile.html" class="buttons" style=" right: 0;"><</a>
+            <h1 class="" style="color: white; font-family: 'Montserrat', sans-serif; text-align: left; margin: 0 0 0 20; font-size: 300%; ">New </br>Post</h1>
         </div>
-        <div class="fadein3" id="companies">
-            <p id="portfoliolabel" onclick="openPortfolio()"style="display:inline-block;color: white; font-family: 'Montserrat', sans-serif; margin:10 0 5 10; font-size: 20">Portfolio</p>
-            <p id="postslabel" onclick="openPosts()"style="display: inline-block; color: gray; font-family: 'Montserrat', sans-serif; margin: 10 0 5 10; font-size: 20">Posts</p>
-            </br>
-            <div id="portfolio">
-                <a href="company1.html" class="company">Company 1</a>
-                <div onclick="location.href='newcompany.html';" class="company" style="background: transparent; border: 2px dashed rgb(243, 156, 18)">+</div>
+        <div style="margin: 10;">
+            <div class="post fadein">
+                Upload Picture
             </div>
-            <div id="posts">
-                <a class="company" style="background-image: url('postpic.png');background-size: cover; "></a>
-                <div onclick="location.href='profile_newpost.html';" class="company" style="background: transparent; border: 2px dashed rgb(243, 156, 18)">+</div>
+        </div>
+        <div id="" class="fadein3">
+            <form style="margin: 0; border: 2px solid rgb(243, 156, 18); padding: 10px 0 10px 0; border-radius: 20px; height: fit-content; margin: 10;">
+                <input type="text" id="username" placeholder="Caption">
+            </form>
+            <div class="post fadein">
+                Post</br>
+                (Doesnt Work Yet)
             </div>
         </div>
 
 
     </div>
-    <script>
-        function openPosts() {
-            document.getElementById('postslabel').style.color = "white";
-            document.getElementById('portfoliolabel').style.color = "gray";
-            document.getElementById('portfolio').style.display = "none";
-            document.getElementById('posts').style.display = "block";
-        }
-        function openPortfolio() {
-            document.getElementById('postslabel').style.color = "gray";
-            document.getElementById('portfoliolabel').style.color = "white";
-            document.getElementById('portfolio').style.display = "block";
-            document.getElementById('posts').style.display = "none";
-        }
-    </script>
 </body>
 <html>

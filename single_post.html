@@ -43,18 +43,17 @@
             background-image: url('background.jpg');
             background-size: cover;
             overflow: hidden;
-            height:100%;
+            height: 100%;
             box-sizing: border-box;
             margin: 0;
         }
 
         .center {
-            position:relative;
-            display:block;
+            position: relative;
+            display: block;
             text-align: center;
             box-sizing: border-box;
-            height:100%;
-            padding-top: 10%;
+            height: 100%;
         }
 
         .button {
@@ -122,7 +121,6 @@
             animation-duration: 1s;
         }
         img {
-
             width: 50%;
         }
 
@@ -131,39 +129,40 @@
                 width: 10%;
             }
         }
+
         #companies {
-            border-radius: 20px;
-            background: rgba(0,0,0, 0.5);
-            display: block;
-            position: absolute;
+            background: transparent;
+            display: flex;
             width: 100%;
-            height: 45%;
-            padding: 10 0 0 10;
+            height: 12%;
+            padding: 10 10 10 10;
             bottom: 0%;
             box-sizing: border-box;
-            text-align: left;
             border-top: 2px solid rgb(243, 156, 18);
+            text-align: center;
+            vertical-align: middle;
         }
+
         .company {
             transition: all 0.25s;
             user-select: none;
             display: inline-block;
             color: white;
-            background: rgba(243, 156, 18,0.5);
-            width: 30vw;
-            height: 30vw;
-            float: left;
-            line-height: 30vw;
-            text-align:center;
+            background: transparent;
+            width: 15vw;
+            height: 15vw;
+            line-height: 15vw;
             border-radius: 20px;
-            margin: 3;
+            margin: auto auto;
             font-family: 'Montserrat', sans-serif;
             border: 2px solid rgb(243, 156, 18);
             box-sizing: border-box;
         }
-            .company:hover, .company:focus{
+
+            .company:hover, .company:focus {
                 background: rgba(243, 156, 18,1);
             }
+
         .buttons {
             transition: all 0.25s;
             user-select: none;
@@ -173,21 +172,52 @@
             position: absolute;
             width: 15vw;
             height: 15vw;
-            line-height: 14vw;
+            line-height: 14.5vw;
             margin: 10;
+            margin-top: 0;
             float: left;
             border-radius: 50%;
             font-family: 'Montserrat', sans-serif;
             border: 2px solid rgb(243, 156, 18);
             box-sizing: border-box;
         }
+
         a, a:hover, a:focus, a:active {
             text-decoration: none;
             -webkit-tap-highlight-color: transparent !important;
         }
-        #posts{
-            display:none;
+        .header {
+            padding-top: 8%;
+            padding-bottom: 8%;
         }
+        .post {
+            display: inline-block;
+            width: 80%;
+            height: fit-content;
+            background: rgba(243, 156, 18, 0.3);
+            margin: 30 0 10 0;
+            border-radius: 20px;
+            border: 2px solid rgb(243, 156, 18);
+            box-sizing: border-box;
+        }
+        .postbuttons {
+            transition: all 0.25s;
+            user-select: none;
+            display: inline-block;
+            color: white;
+            background: transparent;
+            width: 10vw;
+            height: 10vw;
+            margin: 5;
+            border-radius: 50%;
+            font-family: 'Montserrat', sans-serif;
+            border: 1px solid rgb(243, 156, 18);
+            box-sizing: border-box;
+            padding: 5;
+        }
+            .postbuttons:hover {
+                background: rgb(243, 156, 18);
+            }
     </style>
     <title>
         Launch Zone
@@ -195,43 +225,32 @@
 </head>
 <body>
     <div class="center">
-        <a href="menu.html"class="buttons" style=" left: 0;"><</a>
-        <a href="index.html"class="buttons" style=" right: 0; font-size: 50%;">Log Out</a>
-        <img class="fadein2" src="Capture.PNG" style=""></img>
-        <div style=" padding: 10% 10% 10% 10%; ">
-            <div class="button fadein" style="margin: 0 auto"> </div>
-            <p style="color: white; margin:10 0 5 0;font-family: 'Montserrat', sans-serif; ">Guest</p>
-            <p style="color: white; font-family: 'Raleway', sans-serif; margin: 0"> Followers: <b>1</b> || Following: <b>1</b></p>
+        <div class="fadein2 header">
+            <a href="menu.html" class="buttons" style=" margin:10;right: 0;"><</a>
         </div>
-        <div class="fadein3" id="companies">
-            <p id="portfoliolabel" onclick="openPortfolio()"style="display:inline-block;color: white; font-family: 'Montserrat', sans-serif; margin:10 0 5 10; font-size: 20">Portfolio</p>
-            <p id="postslabel" onclick="openPosts()"style="display: inline-block; color: gray; font-family: 'Montserrat', sans-serif; margin: 10 0 5 10; font-size: 20">Posts</p>
-            </br>
-            <div id="portfolio">
-                <a href="company1.html" class="company">Company 1</a>
-                <div onclick="location.href='newcompany.html';" class="company" style="background: transparent; border: 2px dashed rgb(243, 156, 18)">+</div>
+        <div style="height: 70%; background: rgba(0,0,0, 0.3);overflow: scroll">
+            <div class="post fadein">
+                <div class="header" style="padding: 20px; text-align: left; ">
+                    <a href="profilebot.html" style="vertical-align:middle;display: inline-block; width: 10vw; height: 10vw; background: rgb(243, 156, 18); border-radius: 50%; background-image: url('bot.png'); background-size: cover; "></a>
+                    <p href="profilebot.html" style="display: inline-block; margin: 5; color: white; font-family: 'Montserrat', sans-serif; ">LaunchBot</p>
+                </div>
+                <img src="postpic.png" style="width: 100%; user-select: none" />
+                <div style="border-top: 2px solid rgb(243, 156, 18)">
+                    <img class="postbuttons" src="share.png"></img>
+                    <img class="postbuttons" src="comment.png" onclick="location.href='comments.html';"></img>
+                    <img class="postbuttons" src="like.png"></img>
+                    <div style="text-align: left; font-family: 'Raleway', sans-serif; color: white; padding-left: 20;">
+                        <p style="margin:0;"><b>100 Likes</b></p>
+                        <p style="margin:0 0 10 0;"><b>Launch Bot </b>Check out these fresh new kicks</p>
+                    </div>
+                </div>
             </div>
-            <div id="posts">
-                <a class="company" style="background-image: url('postpic.png');background-size: cover; "></a>
-                <div onclick="location.href='profile_newpost.html';" class="company" style="background: transparent; border: 2px dashed rgb(243, 156, 18)">+</div>
-            </div>
+        </div>
+        <div id="companies" class="fadein3">
+            <div onclick="location.href='newpost.html';" class="company" style="">+</div>
         </div>
 
 
     </div>
-    <script>
-        function openPosts() {
-            document.getElementById('postslabel').style.color = "white";
-            document.getElementById('portfoliolabel').style.color = "gray";
-            document.getElementById('portfolio').style.display = "none";
-            document.getElementById('posts').style.display = "block";
-        }
-        function openPortfolio() {
-            document.getElementById('postslabel').style.color = "gray";
-            document.getElementById('portfoliolabel').style.color = "white";
-            document.getElementById('portfolio').style.display = "block";
-            document.getElementById('posts').style.display = "none";
-        }
-    </script>
 </body>
 <html>
