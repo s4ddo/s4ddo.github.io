@@ -12,7 +12,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-        #message, #password {
+        #username, #password {
             font-family: 'Montserrat', sans-serif;
             color: white;
             border: 2px solid rgba(243, 156, 18, 0);
@@ -25,7 +25,7 @@
             display:inline-block;
             font-size: 100%;
         }
-            #message::placeholder {
+            #username::placeholder {
                 color: white;
                 font-family: 'Montserrat', sans-serif;
             }
@@ -212,23 +212,20 @@
 
         #header {
             padding-bottom: 20px;
-            border-bottom: 2px solid rgb(243, 156, 18);
         }
 
         .post {
             display: inline-block;
-            width: fit-content%;
-            max-width:60%;
+            width: fit-content;
             height: fit-content;
             padding: 10;
             background: transparent;
             margin: 10;
             color: white;
             border-radius: 20px;
-            text-align: left;
+            text-align: center;
             font-family: 'Roboto', sans-serif;
             border: 2px solid rgb(243, 156, 18);
-            vertical-align: middle;
 
         }
     </style>
@@ -239,42 +236,25 @@
 <body>
     <div class="center">
         <div class="fadein2" id="header">
-            <a href="menu.html" class="buttons" style=" right: 0;"><</a>
-            <h1 class="" style="color: white; font-family: 'Montserrat', sans-serif; text-align: left; margin: 0 0 0 20; font-size: 300%; ">Chat</br>Zone!</h1>
+            <a href="feed.html" class="buttons" style=" right: 0;"><</a>
+            <h1 class="" style="color: white; font-family: 'Montserrat', sans-serif; text-align: left; margin: 0 0 0 20; font-size: 300%; ">New </br>Post</h1>
         </div>
-        <div class="fadein"id="chatbox" style="margin: 10; overflow: scroll;height: 60%;">
-            <div style="text-align:left; margin:10;">
-                <div class="" style="vertical-align:middle;display: inline-block; width: 20vw; height: 20vw; background: rgb(243, 156, 18); border-radius: 50%; background-image: url('bot.png'); background-size: cover; "></div>
-                <div class="post">
-                    Hi! My name is LaunchBot, im your personal AI assitant for all things business. If you need advice/insight on anything, feel free to ask me as many questions! I sadly do not work at the moment but your free to talk to yourself in the mean time!
-                </div>
+        <div style="margin: 10;">
+            <div class="post fadein">
+                Upload Picture
             </div>
-         
-
         </div>
-            <div id="companies" class="fadein3">
-                <form id="daform" onsubmit="sendMessage()" style="margin: 0; border: 2px solid rgb(243, 156, 18); padding: 10px 0 10px 0; border-radius: 20px; height: fit-content;">
-                    <input type="text" id="message" placeholder="Send a message!">
-                    <div id="b1" type="submit" onclick="sendMessage()">></div>
-                </form>
+        <div id="" class="fadein3">
+            <form style="margin: 0; border: 2px solid rgb(243, 156, 18); padding: 10px 0 10px 0; border-radius: 20px; height: fit-content; margin: 10;">
+                <input type="text" id="username" placeholder="Caption">
+            </form>
+            <div class="post fadein">
+                Create</br>
+                (Doesnt Work Yet)
             </div>
-
-
         </div>
-    <script>
-        var form = document.getElementById("daform");
-        function handleForm(event) { event.preventDefault(); }
-        form.addEventListener('submit', handleForm);
 
-        function sendMessage() {
-            document.getElementById('chatbox').innerHTML += '<div style="text-align: right; margin: 10;"><div class="post">' + document.getElementById('message').value + '</div><div class="" style="vertical-align:middle; display: inline-block; width: 20vw; height: 20vw; background: rgb(243, 156, 18); border-radius: 50%; background-image: url(profile.png); background-size: cover; "></div></div>';
-            document.getElementById('message').value = "";
-        }
-        input.addEventListener("keypress", function (event) {
-            if (event.keyCode == 13) {
-                sendMessage()
-            }
-        });
-    </script>
+
+    </div>
 </body>
 <html>
