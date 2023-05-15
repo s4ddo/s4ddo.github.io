@@ -267,8 +267,10 @@
         form.addEventListener('submit', handleForm);
 
         function sendMessage() {
-            document.getElementById('chatbox').innerHTML += '<div style="text-align: right; margin: 10;"><div class="post">' + document.getElementById('message').value + '</div><div class="" style="vertical-align:middle; display: inline-block; width: 20vw; height: 20vw; background: rgb(243, 156, 18); border-radius: 50%; background-image: url(profile.png); background-size: cover; "></div></div>';
-            document.getElementById('message').value = "";
+            if (document.getElementById('message').value != "") {
+                document.getElementById('chatbox').innerHTML += '<div style="text-align: right; margin: 10;"><div class="post">' + document.getElementById('message').value + '</div><div class="" style="vertical-align:middle; display: inline-block; width: 20vw; height: 20vw; background: rgb(243, 156, 18); border-radius: 50%; background-image: url(profile.png); background-size: cover; "></div></div>';
+                document.getElementById('message').value = "";
+            }   
         }
         input.addEventListener("keypress", function (event) {
             if (event.keyCode == 13) {
