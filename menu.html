@@ -101,9 +101,26 @@
         img {
             width: 80%;
         }
+        #censor {
+            position: absolute;
+            top: 0;
+            background: black;
+            color: white;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 20px;
+            display: none;
+            z-index: 100;
+        }
         @media only screen and (min-width: 1224px) {
             img{
                 width: 10%;
+            }
+            #censor{
+                display:block
             }
         }
         a, a:hover, a:focus, a:active {
@@ -116,6 +133,9 @@
     </title>
 </head>
 <body>
+    <div id="censor" style=" ">
+        This website is made to be used on a mobile phone please reopen this page on your phone, Thank you so much!
+    </div>
     <div class="center">
         <img class="fadein2" src="Capture.PNG" style=""></img>
         <div style="padding: 5% 10% 10% 10%; ">

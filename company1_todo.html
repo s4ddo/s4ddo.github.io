@@ -192,7 +192,6 @@
         .header {
             padding-top: 8%;
             padding-bottom: 8%;
-            border-bottom: 2px solid rgb(243, 156, 18);
         }
 
         .post {
@@ -225,11 +224,12 @@
             .postbuttons:hover {
                 background: rgb(243, 156, 18);
             }
+
         .progressbar {
             display: inline-block;
             width: 80%;
             height: 10%;
-            padding:10;
+            padding: 10;
             vertical-align: middle;
             font-family: 'Montserrat', sans-serif;
             background: rgba(0,0,0, 0.5);
@@ -238,7 +238,54 @@
             border: 2px solid rgb(243, 156, 18);
             box-sizing: border-box;
             color: white;
-            position:relative;
+            position: relative;
+        }
+        li {
+            font-family: 'Montserrat', sans-serif;
+            border: 2px solid rgba(243, 156, 18);
+            width: 4em;
+            height: 4em;
+            text-align: center;
+            line-height: 4em;
+            border-radius: 1em;
+            background: rgba(243, 156, 18);
+            margin: 0 1em;
+            margin-bottom: 5;
+            display: inline-block;
+            color: white;
+            position: relative;
+        }
+
+            li::before {
+                content: '';
+                position: absolute;
+                top: 1.5em;
+                left: -4em;
+                width: 3.8em;
+                height: .2em;
+                background: rgba(243, 156, 18);
+                z-index: -1;
+                border: 2px solid rgba(243, 156, 18);
+            }
+
+
+            li:first-child::before {
+                display: none;
+            }
+
+        .active {
+            background: rgba(243, 156, 18);
+        }
+
+            .active ~ li {
+                background: black;
+            }
+
+                .active ~ li::before {
+                    background: black;
+                }
+        ul{
+            padding: 0;
         }
     </style>
     <title>
@@ -249,25 +296,40 @@
     <div class="center">
         <div class="fadein2 header">
             <a href="profile.html" class="buttons" style=" right: 0;"><</a>
-            <h1 class="" style="color: white; font-family: 'Montserrat', sans-serif; text-align: left; margin: 0 0 0 20; font-size: 200%; ">Company 1</h1>
+            <h1 class="" style="color: white; font-family: 'Montserrat', sans-serif; text-align: left; margin: 0 0 0 20; font-size: 300%; ">To do</h1>
         </div>
-        <div style="height: 70%; background: rgba(0,0,0, 0.3);overflow: scroll">
-            <div class="fadein3 progressbar ">Progress<div class="progressbar" style="position: absolute; left: 0; top: 0; margin: 0; height: 100%; background: rgba(243, 156, 18, 0.3);border:none;"></div></div>
-            <div class="post fadein">
-                <div class="header" style="padding: 20px; text-align: left; ">
-                    <p style="display: inline-block; margin: 1px; color: white; font-family: 'Montserrat', sans-serif; ">Analytics</p>
-                </div>
-                <img src="graph.png" style="width: 100%; user-select: none" />
-                <div style=" font-family: 'Raleway', sans-serif; color: white; padding-left: 20; text-align: left; border-top: 2px solid rgb(243, 156, 18)">
-                    <p>Date: 2/10/2022</p>
-                    <p> Total Sales: 200,000</p>
-                </div>
-            </div>
-
+        <div class="fadein">
+            <ul>
+                <li>start</li>
+                <li class="active">step 2</li>
+                <li style="background: rgba(243, 156, 18,0.1)">step 3</li>
+            </ul>
+            <ul>
+                <li class="active" style="background: black">4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+            <ul>
+                <li class="active" style="background: black">7</li>
+                <li>8</li>
+                <li>9</li>
+            </ul>
+            <ul>
+                <li class="active" style="background: black">10</li>
+                <li>11</li>
+                <li>12</li>
+            </ul>
+            <ul>
+                <li class="active" style="background: black">13</li>
+                <li>13</li>
+                <li>14</li>
+            </ul>
+            <ul>
+                <li class="active" style="background: black">15</li>
+                <li>16</li>
+                <li>17</li>
+            </ul>
         </div>
-        <a href="company1_todo.html" class="fadein2 progressbar" style="margin: 0; background: rgba(16, 194, 111,0.8); padding: 20;">Continue</a>
-
-
 
     </div>
 </body>
