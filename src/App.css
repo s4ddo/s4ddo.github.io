@@ -24,11 +24,13 @@
 .titleBox {
     z-index: 1;
     position: absolute;
-    height: 100vh;
-    width: 100vw;
+    height: fit-content;
     align-content: center;
     opacity: 1;
     transition: all 1s;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .titleBox.disabled {
@@ -55,7 +57,6 @@
     border: 2px solid white;
     width: fit-content;
     margin: 20px auto 0 auto;
-
     transition: all 0.25s;
 }
 
@@ -67,9 +68,4 @@
 
 h1 {
     font-size: 5vw;
-
-}
-
-.threecanvas {
-
 }
