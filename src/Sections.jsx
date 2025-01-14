@@ -63,7 +63,7 @@ function GalleryGenerator({folder = 'posters'}){
     if (error) return <div>Error: {error}</div>;
 
     return (
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "left", height: "60vh", overflow:"scroll"}}>
+        <div className="imageContainer">
             {images.map((src, index) => (
                 <img
                     key={index}
@@ -86,7 +86,7 @@ function ButtonToolbar({currentSection}) {
     if (currentTarget.x < 0 ) cubes.push(<BackButton text={"Back"}/>);
 
 
-    return cubes;
+    return <div>{cubes}</div>;
 }
 function BackButton({text}) {
     const { setCurrentSection, currentTarget, setCurrentTarget } = useGlobalState();

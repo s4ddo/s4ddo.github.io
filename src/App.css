@@ -139,3 +139,12 @@ h1 {
     margin-bottom: 0;
     margin-top: 0;
 }
+
+.imageContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 60vh;
+    overflow: scroll;
+    margin-top: 10px;
+}
