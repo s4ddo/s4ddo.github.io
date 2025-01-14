@@ -1,0 +1,1 @@
+const t="/assets/talentshow-DXSXHYR_.jpg";export{t as default};
