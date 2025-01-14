@@ -91,16 +91,19 @@
     border: 2px solid white;
     width: fit-content;
     transition: all 0.25s;
-    margin:  0 10px 0 auto;
+    margin:  10px 10px 0 auto;
     z-index: 2;
     top: 0;
     left: 0;
     right: unset;
 }
-
+.button.active {
+    background-color:  white;
+    color: black;
+}
 .button.right {
     left: unset;
-    margin:  0 auto 0 10px;
+    margin:  10px auto 0 10px;
 }
 
 .button:hover {
@@ -112,7 +115,7 @@
     display: inline-block;
     position: absolute;
     top: 15%;
-    width: fit-content;
+    width: 50%;
     height: fit-content;
     padding: 50px;
     background: transparent;

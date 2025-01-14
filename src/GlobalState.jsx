@@ -4,26 +4,38 @@ import React, { createContext, useContext, useState } from "react";
 const GlobalContext = createContext();
 
 // Provider component
+export const Sections = {
+    Intro: "Intro",
+    GraphicDesign : "Graphic Design",
+    Programming : "Programming",
+    General: "General"
+}
+
 export const GlobalProvider = ({ children }) => {
     const [globalIntro, setGlobalIntro]  = useState(true);
     const [currentTarget, setCurrentTarget] = useState({x:0, y: 0, z: 5 });
+
     const [mouse, setMouse] = useState({ x: 0, y: 0 });
-    const [popUpContent, setPopUpContent] = useState({
-        title: "Title",
-        subtitle: "Subtitle",
-        description: "Description",
-        domElement: <></>});
+
+    const [currentSection, setCurrentSection] = useState(Sections.Intro);
+    const [currentSubSection, setCurrentSubSection] = useState("Overview");
 
     return (
         <GlobalContext.Provider value={{
             globalIntro,
             setGlobalIntro,
+
             currentTarget,
             setCurrentTarget,
+
             mouse,
             setMouse,
-            popUpContent,
-            setPopUpContent,
+
+            currentSection,
+            setCurrentSection,
+
+            currentSubSection,
+            setCurrentSubSection
         }}>
             {children}
         </GlobalContext.Provider>
