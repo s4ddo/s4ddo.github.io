@@ -3,19 +3,41 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { PerspectiveCamera, OrbitControls, Text  } from "@react-three/drei";
 import { GlobalProvider, useGlobalState, Sections } from "./GlobalState.jsx";// UX STUFF
 
-function Box({meshRef, onClick, position = [0,0,0], text, props}) {
+function Box({meshRef, onClick, position = [0,0,0], text, props, mesh_color = 'orange'}) {
 	const [hovered, setHover] = useState(false);
+	const localRef = useRef();
+	const localGroupRef = useRef();
+	const og_y = position[1];
+	const [clock] = useState(() => ({ time: 0 }));
+
+	useFrame((state, delta) => {
+		//rotate the mesh around the y-axis
+
+		localRef.current.rotation.y += 0.0025;
+		localRef.current.rotation.x += 0.0025;
+
+		clock.time += delta;
+		const bobHeight = Math.sin(clock.time * 2) * 0.2; // Adjust 0.05 to change bob height
+		localGroupRef.current.position.y = og_y + bobHeight;
+		}
+	)
+
+	meshRef(localGroupRef.current);
+
 	return (
-		<group ref={meshRef} position={position}>
+		<group ref={localGroupRef} position={position}>
 			<mesh
 				{...props}
 				scale={1}
+				ref = {localRef}
 				onClick={onClick}
 				onPointerOver={() => setHover(true)}
 				onPointerOut={() => setHover(false)}
 			>
 				<boxGeometry args={[1, 1, 1]} />
-				<meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
+				<meshStandardMaterial color={hovered ? mesh_color: mesh_color}
+									  emissive={hovered ? mesh_color : 'black'}
+									  emissiveIntensity={hovered ? 2 : 0}/>
 			</mesh>
 			<Text
 				position={[0,-1,0]}
@@ -78,17 +100,20 @@ function Scene(){
 				meshRef={(el) => (cubeRefs.current[Sections.GraphicDesign] = el)}
 				onClick={() => cubeFunc(Sections.GraphicDesign)}
 				text={Sections.GraphicDesign}
-				position={[4,0,-5]} />
+				position={[4,0,-5]}
+				mesh_color={"red"}/>
 			<Box
 				meshRef={(el) => (cubeRefs.current[Sections.Programming] = el)}
 				onClick={() => cubeFunc(Sections.Programming)}
 				text={Sections.Programming}
-				position={[-4,0,-5]} />
+				position={[-4,-1,-5]}
+				mesh_color={"cyan"}/>
 			<Box
 				meshRef={(el) => (cubeRefs.current[Sections.General] = el)}
 				onClick={() => cubeFunc(Sections.General)}
 				text={Sections.General}
-				position={[-2.5,2.5,-5]} />
+				position={[-2.5,2,-5]}
+				mesh_color={"orange"}/>
 
 		</>
 	);

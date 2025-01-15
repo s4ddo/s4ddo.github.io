@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poor+Story&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lexend:wght@100..900&family=Poor+Story&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Prata&display=swap');
 @keyframes fadein {
     from {
         opacity: 0;
@@ -73,7 +73,7 @@
 }
 
 .title {
-    font-family: 'DM Serif Display',serif;
+    font-family: "DM Serif Text", serif;
     color: white;
     display: block;
     text-align: center;
@@ -96,6 +96,8 @@
     top: 0;
     left: 0;
     right: unset;
+    font-family: "Lexend";
+    font-weight: 700;
 }
 .button.active {
     background-color:  white;
@@ -129,15 +131,14 @@
 }
 
 .popup.right{
-    right: 10%;
+    right: 5%;
     left: unset;
-    text-align: right;
 }
 
 h1 {
     font-size: 5vw;
     margin-bottom: 0;
-    margin-top: 0;
+    margin-top: 20px;
 }
 
 .imageContainer{
@@ -147,4 +148,30 @@ h1 {
     height: 60vh;
     overflow: scroll;
     margin-top: 10px;
+    align-content: start;
+}
+
+h3 {
+    margin-top: 0;
+    font-family: "Prata", serif;
+    font-size: 1.5vw;
+}
+
+p {
+    font-size: 1vw;
+    font-family: "Lexend";
+    font-weight: 200;
+}
+
+a {
+    text-decoration: none;
+    color: orange;
+    font-family: "Lexend", serif;
+    font-weight: 600;
+    margin: 0;
+    transition: all 0.25s;
+}
+
+a:hover {
+    color: white;
 }

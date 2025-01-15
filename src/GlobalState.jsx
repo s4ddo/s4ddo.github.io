@@ -7,7 +7,7 @@ const GlobalContext = createContext();
 export const Sections = {
     Intro: "Intro",
     GraphicDesign : "Graphic Design",
-    Programming : "Programming",
+    Programming : "Code Projects",
     General: "General"
 }
 
