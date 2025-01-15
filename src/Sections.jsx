@@ -37,7 +37,7 @@ const SectionContent = {
             domElement={<YouTubeEmbed video_id={"8VznNzeOSYw"}/>}/>,
 
         enVRnment: () => <BasicOverview
-            title={"enVRnment"}
+            title={"enVRnment"} 
             subtitle={"2nd Place Hackathon VR Environmental Game "}
             sub_subtitle={"https://github.com/s4ddo/vr_hackation"}
             description={`2nd place hackathon for IVM-VR lab environmental vr game project with the aim of raising 
