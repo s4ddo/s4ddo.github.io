@@ -1,6 +1,6 @@
 import React, {Suspense, useRef, useState} from 'react';
 import { Canvas, useFrame } from "@react-three/fiber";
-import { PerspectiveCamera, OrbitControls, Text  } from "@react-three/drei";
+import { PerspectiveCamera, OrbitControls, Text, Sky  } from "@react-three/drei";
 import { GlobalProvider, useGlobalState, Sections } from "./GlobalState.jsx";// UX STUFF
 
 function Box({meshRef, onClick, position = [0,0,0], text, props, mesh_color = 'orange'}) {
@@ -88,6 +88,7 @@ function Scene(){
 
 	return (
 		<>
+
 			<ambientLight intensity={0.5} />
 			<directionalLight position={[10, 10, 5]} intensity={1} />
 

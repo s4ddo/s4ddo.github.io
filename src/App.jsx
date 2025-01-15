@@ -1,8 +1,19 @@
 import React, { useRef, useState, createRef, useEffect } from 'react';
 import './App.css';
 import {ThreeCanvas} from './MyThree.jsx';
-import {PopUp, Intro} from "./Sections.jsx";
+import {PopUp} from "./Sections.jsx";
 import { GlobalProvider, useGlobalState, Sections } from "./GlobalState.jsx";// UX STUFF
+
+
+export function Intro(){
+
+    return (
+        <div className='titleBox'>
+            <h1 className="fadein title">s4ddo's</h1>
+            <h3 className="fadein title">portfolio</h3>
+        </div>
+    );
+}
 
 function AppContent(){
     const {currentSection, setMouse} = useGlobalState();
@@ -21,6 +32,7 @@ function AppContent(){
         </div>
     );
 }
+
 
 function App() {
     return (

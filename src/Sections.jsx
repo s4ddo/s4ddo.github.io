@@ -1,6 +1,8 @@
 import {Sections, useGlobalState} from "./GlobalState.jsx";
-import React, {Suspense, useState, useEffect} from "react";
+import {Picture, PictureGallery, GalleryGenerator} from "./Pictures.jsx";
+import {ButtonToolbar, YouTubeEmbed, BasicOverview} from "./SectionsContent.jsx";
 
+import React, {Suspense, useState, useEffect} from "react";
 
 const SectionContent = {
     [Sections.GraphicDesign] : {
@@ -37,7 +39,7 @@ const SectionContent = {
             domElement={<YouTubeEmbed video_id={"8VznNzeOSYw"}/>}/>,
 
         enVRnment: () => <BasicOverview
-            title={"enVRnment"} 
+            title={"enVRnment"}
             subtitle={"2nd Place Hackathon VR Environmental Game "}
             sub_subtitle={"https://github.com/s4ddo/vr_hackation"}
             description={`2nd place hackathon for IVM-VR lab environmental vr game project with the aim of raising 
@@ -53,7 +55,7 @@ const SectionContent = {
         Erica: () => <BasicOverview
             title={"Erica & Ahmad"}
             subtitle={"One Year Anniversary Video Game"}
-            sub_subtitle={"https://www.instagram.com/p/C4TV4opsZpo"}
+            sub_subtitle={"https://s4ddo.itch.io/erica-ahmad-episode-2"}
             description={`A video game I made for my one year anniversary with my top no 1 g Erica sigma. This game is 
              set to private because its really special for me!`}
             domElement={<Picture folder={"code_projects/erica"} fileName={"0.jpg"}/>}/>,
@@ -74,6 +76,14 @@ const SectionContent = {
             description={`A UX design project I developed for a startup company called Ceilbeit. The startup aimed to 
             create portfolios for people who want a quick and easy way to have a website and social media presence.'`}
             domElement={<PictureGallery folder={"code_projects/ceilbeit"}/>}/>,
+
+        PygameWordle: () => <BasicOverview
+            title={"Pygame Wordle"}
+            subtitle={"A Pygame Wordle Project"}
+            sub_subtitle={"https://s4ddo.itch.io/python-wordle-game"}
+            description={`This was a game I woked on to familiarize myself with Python before enterhing university. It 
+            was really fun to make!'`}
+            domElement={<PictureGallery folder={"code_projects/wordle"}/>}/>,
     },
     [Sections.General] : {
         Overview: () => <BasicOverview
@@ -85,167 +95,12 @@ const SectionContent = {
 
 }
 
-function Picture({ folder, fileName }) {
-    const [image, setImage] = useState(null);
-    useEffect(() => {
-        async function loadImage() {
-            const imageModule = await import(`/portfolio/src/assets/${folder}/${fileName}`);
-            setImage(imageModule.default);
-        }
-        loadImage();
-    }, [folder, fileName]);
-
-    return <img src={image} style={{width: "100%"}} alt="Loaded content" />;
-}
-
-
-function PictureGallery({ folder }) {
-    const [images, setImages] = useState([]);
-
-
-    useEffect(() => {
-        async function loadImages() {
-            const imageModules = import.meta.glob('/src/assets/**/*.{jpg,JPG,png,PNG,gif,GIF,svg,SVG}');
-            const imagePromises = Object.entries(imageModules).filter(([path]) => path.includes(`/${folder}/`)).map(([_, loader]) => loader());
-            const loadedModules = await Promise.all(imagePromises);
-            const loadedImages = loadedModules.map(module => module.default);
-            setImages(loadedImages);
-        }
-        loadImages();
-    }, [folder]);
-
-    return (
-        <div className="imageContainer">
-            {images.map((src, index) => (
-                <img
-                    key={index}
-                    src={src}
-                    alt={`Gallery image ${index + 1}`}
-                    style={{ width: 'fit-content', height: '230px', margin: '10px', objectFit: 'cover' }}
-                />
-            ))}
-        </div>
-    );
-}
-
-
-function GalleryGenerator({folder = 'posters'}){
-    const [images, setImages] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        async function loadImages() {
-            try {
-                const imageModules = import.meta.glob('/src/assets/graphic_design/gallery/**/*.{jpg,JPG,png,PNG,gif,GIF,svg,SVG}');
-                const imagePromises = Object.entries(imageModules).filter(([path]) => path.includes(`/${folder}/`)).map(([_, loader]) => loader());
-                const loadedModules = await Promise.all(imagePromises);
-                const loadedImages = loadedModules.map(module => module.default);
-                setImages(loadedImages);
-                setIsLoading(false);
-            } catch (err) {
-                console.error("Failed to load images lol:", err);
-                setError("Failed to load images");
-                setIsLoading(false);
-            }
-        }
-
-        loadImages();
-    }, [folder]);
-
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
-
-    return (
-        <div className="imageContainer">
-            {images.map((src, index) => (
-                <img
-                    key={index}
-                    src={src}
-                    alt={`Gallery image ${index + 1}`}
-                    style={{ width: 'fit-content', height: '230px', margin: '10px', objectFit: 'cover' }}
-                />
-            ))}
-        </div>
-    );
-}
-function ButtonToolbar({currentSection}) {
-    const cubes = [];
-
-    cubes.push(<BackButton text={"Back"}/>);
-    Object.keys(SectionContent[currentSection]).forEach((key) => {
-        cubes.push(<SubSectionButton key={key} text={key}/>)
-    })
-
-
-    return <div>{cubes}</div>;
-}
-function BackButton({text}) {
-    const { setCurrentSection, currentTarget, setCurrentTarget } = useGlobalState();
-
-    const onClick = () => {
-        setCurrentSection(Sections.Intro);
-        setCurrentTarget({x:0, y: 0, z: 5 });
-    }
-
-    return <div className={`button fadein ${currentTarget.x < 0 ? "" : "right"} `} onClick={onClick}>{text}</div>
-}
-
-export function SubSectionButton({text}) {
-    const {currentTarget, currentSubSection ,setCurrentSubSection} = useGlobalState();
-
-    const onClick = () => setCurrentSubSection(text);
-    return <div
-        className=
-            {`button 
-              fadein 
-              ${currentTarget.x < 0 ? "" : "right"} 
-              ${currentSubSection === text ? "active" : ""}`} onClick={onClick}>{text}</div>
-}
-export function Intro(){
-
-    return (
-        <div className='titleBox'>
-            <h1 className="fadein title">s4ddo's</h1>
-            <h3 className="fadein title">portfolio</h3>
-        </div>
-    );
-}
-function YouTubeEmbed({video_id = `yqFCN44x69k`}){
-
-    return (
-        <Suspense fallback={<div>Loading...</div>}>
-            <iframe
-                width="560"
-                height="315"
-                src={`https://www.youtube.com/embed/${video_id}?si=QJPHEDjkAV8Na_oD`}
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen />
-        </Suspense>)
-        ;
-}
-function BasicOverview({title, subtitle, sub_subtitle, description, domElement = () => <></>}){
-    return (
-        <div style={{display: "block", height: "100%" , overflow: "scroll"}}>
-            <h1>{title}</h1>
-            <h3>{subtitle}</h3>
-            <a href={sub_subtitle}>{sub_subtitle}</a>
-            <p>{description}</p>
-            {domElement}
-        </div>
-    );
-}
-
-
 export function PopUp({title = 'Title', subtitle = 'Subtitle', description = 'description'}){
     const {currentTarget, currentSection, currentSubSection} = useGlobalState();
 
     return (
     <div className={`popup ${currentTarget.x < 0 ? "right fadeinleft" : "fadeinright"}`}>
-        <ButtonToolbar currentSection={currentSection}/>
+        <ButtonToolbar SectionContent={SectionContent} currentSection={currentSection}/>
         {SectionContent[currentSection][currentSubSection]()}
     </div>);
 }
