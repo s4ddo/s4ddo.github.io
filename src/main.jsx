@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <StrictMode style={{width: "100%", height: "100%"}}>
     <App />
   </StrictMode>,
 )

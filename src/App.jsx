@@ -25,7 +25,7 @@ function AppContent(){
     };
 
     return (
-        <div onMouseMove={handleMouseMove}>
+        <div style={{width: "100%", height: "100%"}} onMouseMove={handleMouseMove}>
             {(currentSection !== Sections.Intro) && <PopUp />}
             {(currentSection === Sections.Intro) && <Intro/>}
             <ThreeCanvas />
@@ -36,7 +36,7 @@ function AppContent(){
 
 function App() {
     return (
-        <GlobalProvider>
+        <GlobalProvider style={{width: "100%", height: "100%"}}>
             <AppContent />
         </GlobalProvider>
     );

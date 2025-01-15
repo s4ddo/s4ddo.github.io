@@ -1,6 +1,7 @@
 import React, {Suspense, useRef, useState} from 'react';
-import { Canvas, useFrame } from "@react-three/fiber";
-import { PerspectiveCamera, OrbitControls, Text, Sky  } from "@react-three/drei";
+import { Canvas, useFrame, useLoader} from "@react-three/fiber";
+import { CubeTextureLoader } from 'three';
+import { PerspectiveCamera, OrbitControls, Text, Environment, Backdrop } from "@react-three/drei";
 import { GlobalProvider, useGlobalState, Sections } from "./GlobalState.jsx";// UX STUFF
 
 function Box({meshRef, onClick, position = [0,0,0], text, props, mesh_color = 'orange'}) {
@@ -91,6 +92,19 @@ function Scene(){
 
 			<ambientLight intensity={0.5} />
 			<directionalLight position={[10, 10, 5]} intensity={1} />
+			<Environment
+				background={true} // can be true, false or "only" (which only sets the background) (default: false)
+				backgroundBlurriness={0} // optional blur factor between 0 and 1 (default: 0, only works with three 0.146 and up)
+				backgroundIntensity={1} // optional intensity factor (default: 1, only works with three 0.163 and up)
+				backgroundRotation={[0, Math.PI / 2, 0]} // optional rotation (default: 0, only works with three 0.163 and up)
+				environmentIntensity={1} // optional intensity factor (default: 1, only works with three 0.163 and up)
+				environmentRotation={[0, Math.PI / 2, 0]} // optional rotation (default: 0, only works with three 0.163 and up)
+				files={['noise_overlay.png','noise_overlay.png','noise_overlay.png','noise_overlay.png','noise_overlay.png','noise_overlay.png',]}
+				path="/"
+				preset={null}
+				scene={undefined} // adds the ability to pass a custom THREE.Scene, can also be a ref
+				encoding={undefined} // adds the ability to pass a custom THREE.TextureEncoding (default: THREE.sRGBEncoding for an array of files and THREE.LinearEncoding for a single texture)
+			/>
 
 			<PerspectiveCamera
 				makeDefault

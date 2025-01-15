@@ -1,5 +1,5 @@
 import {Sections, useGlobalState} from "./GlobalState.jsx";
-import {Picture, PictureGallery, GalleryGenerator} from "./Pictures.jsx";
+import {Picture, PictureGallery, GalleryGenerator, NewGalleryGen} from "./Pictures.jsx";
 import {ButtonToolbar, YouTubeEmbed, BasicOverview} from "./SectionsContent.jsx";
 
 import React, {Suspense, useState, useEffect} from "react";

@@ -10,5 +10,4 @@ export default defineConfig({
       '@': '/src',
     },
   },
-  base: '/portfolio/', // Replace <REPO_NAME> with your GitHub repository name
 })

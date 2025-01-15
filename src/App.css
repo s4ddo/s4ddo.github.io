@@ -118,7 +118,7 @@
     position: absolute;
     top: 15%;
     width: 50%;
-    height: fit-content;
+    height: 75vh;
     padding: 50px;
     background: transparent;
     z-index: 1;
@@ -145,7 +145,8 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    height: 60vh;
+    height: min-content;
+    max-height: 60vh;
     overflow: scroll;
     margin-top: 10px;
     align-content: start;
