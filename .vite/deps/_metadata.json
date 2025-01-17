@@ -1,0 +1,82 @@
+{
+  "hash": "cbe7a58d",
+  "configHash": "7f536fc6",
+  "lockfileHash": "a2939921",
+  "browserHash": "ccdef488",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "7085ce7a",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "01cb2d74",
+      "needsInterop": true
+    },
+    "@react-three/fiber": {
+      "src": "../../node_modules/@react-three/fiber/dist/react-three-fiber.esm.js",
+      "file": "@react-three_fiber.js",
+      "fileHash": "39beccea",
+      "needsInterop": false
+    },
+    "three": {
+      "src": "../../node_modules/three/build/three.module.js",
+      "file": "three.js",
+      "fileHash": "e010ab32",
+      "needsInterop": false
+    },
+    "@react-three/drei": {
+      "src": "../../node_modules/@react-three/drei/index.js",
+      "file": "@react-three_drei.js",
+      "fileHash": "73d00d00",
+      "needsInterop": false
+    },
+    "@react-three/postprocessing": {
+      "src": "../../node_modules/@react-three/postprocessing/dist/index.js",
+      "file": "@react-three_postprocessing.js",
+      "fileHash": "c2a49c00",
+      "needsInterop": false
+    },
+    "postprocessing": {
+      "src": "../../node_modules/postprocessing/build/index.js",
+      "file": "postprocessing.js",
+      "fileHash": "420bda11",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "vision_bundle-3QUMERFG": {
+      "file": "vision_bundle-3QUMERFG.js"
+    },
+    "chunk-QDTBIX2K": {
+      "file": "chunk-QDTBIX2K.js"
+    },
+    "chunk-6MCJ7ANC": {
+      "file": "chunk-6MCJ7ANC.js"
+    },
+    "chunk-IKWFLQGY": {
+      "file": "chunk-IKWFLQGY.js"
+    },
+    "chunk-32E4H3EV": {
+      "file": "chunk-32E4H3EV.js"
+    },
+    "chunk-WNN24VGG": {
+      "file": "chunk-WNN24VGG.js"
+    },
+    "chunk-CFHMDKIM": {
+      "file": "chunk-CFHMDKIM.js"
+    },
+    "hls-A26M3NIF": {
+      "file": "hls-A26M3NIF.js"
+    },
+    "chunk-NPN35ABG": {
+      "file": "chunk-NPN35ABG.js"
+    },
+    "chunk-G3PMV62Z": {
+      "file": "chunk-G3PMV62Z.js"
+    }
+  }
+}
