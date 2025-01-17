@@ -9,17 +9,8 @@ import {
   Backdrop,
 } from "@react-three/drei";
 import { GlobalProvider, useGlobalState, Sections } from "./GlobalState.jsx"; // UX STUFF
-import {
-  EffectComposer,
-  Noise,
-  DotScreen,
-  LensFlare,
-  ChromaticAberration,
-  Pixelation,
-  Scanline,
-  Glitch,
-} from "@react-three/postprocessing";
-import { GlitchMode, BlendFunction } from "postprocessing";
+import { EffectComposer, Noise, Scanline } from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
 
 function Box({
   meshRef,
@@ -172,21 +163,11 @@ function Scene() {
         position={[-2.5, 2, -5]}
         mesh_color={"orange"}
       />
-
-      <EffectComposer>
-        {/* <ChromaticAberration
-          blendFunction={BlendFunction.NORMAL} // blend mode
-          offset={[0.001, 0.002]} // color offset
-        /> */}
+      <EffectComposer multisampling={0.1}>
         <Scanline
           blendFunction={BlendFunction.OVERLAY} // blend mode
           density={1.25} // scanline density
         />
-        {/* <DotScreen
-          blendFunction={BlendFunction.SOFT_LIGHT} // blend mode
-          angle={Math.PI} // angle of the dot pattern
-          scale={1} // scale of the dot pattern
-        /> */}
         <Noise opacity={0.25} />
       </EffectComposer>
     </>
