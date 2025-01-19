@@ -91,6 +91,7 @@
   height: 25vh;
   width: 50vh;
   align-content: center;
+  justify-content: center;
   opacity: 1;
   transition: all 1s;
   top: 50%;
@@ -264,7 +265,10 @@ iframe  {
 
   }
 
-
+  .titleBox {
+    width: 50vw;
+    height: 25vw;
+  }
   iframe {
     width: 100%;
     height: 140px;
