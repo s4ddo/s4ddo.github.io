@@ -12,14 +12,19 @@ export function Intro(){
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentFontIndex((prevIndex) => (prevIndex + 1) % fonts.length); // Cycle through fonts
-        }, 500); // Change every 1 second
+        }, 400); // Change every 1 second
         return () => clearInterval(interval); // Clean up the interval on component unmount
     }, [fonts.length]);
 
     return (
         <div className='titleBox'>
+            <img style={{
+                width: "20%",
+                marginLeft: "auto",
+                marginRight: "auto",
+            }} src={"/cat-spinning.gif"} />
             <h1 className="fadein title"
-                style={{ fontFamily: fonts[currentFontIndex] }}>
+                style={{ fontFamily: fonts[currentFontIndex], lineHeight: 1}}>
                     s4ddo's
             </h1>
             <h3 className="fadein title">portfolio</h3>

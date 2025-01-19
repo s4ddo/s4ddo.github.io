@@ -86,7 +86,10 @@
 .titleBox {
   z-index: 1;
   position: absolute;
-  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  height: 25vh;
+  width: 50vh;
   align-content: center;
   opacity: 1;
   transition: all 1s;
@@ -102,7 +105,7 @@
 
 .title {
   font-family: "DM Serif Text", serif;
-  color: white;
+  color: black;
   display: block;
   text-align: center;
   padding: 0;
@@ -115,9 +118,9 @@
   display: inline-block;
   text-align: center;
   background-color: transparent;
-  color: white;
+  color: black;
   padding: 1vh;
-  border: 2px solid white;
+  border: 2px solid black;
   width: fit-content;
   transition: all 0.25s;
   margin: 10px 10px 0 auto;
@@ -129,16 +132,16 @@
   font-weight: 700;
 }
 .button.active {
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
 }
 .button.right {
   left: unset;
 }
 
 .button:hover {
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
 }
 
 .popup {
@@ -174,15 +177,15 @@ h1 {
 
 .my_image {
   width: fit-content;
-  height: 230px;
-  margin: 10px;
+  height: 200px;
+  margin: 1px;
   object-fit: cover;
 }
 
 .imageContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
   height: min-content;
   max-height: 60vh;
   overflow-y: scroll;
@@ -217,7 +220,9 @@ a:hover {
 }
 
 .my_canvas {
+  transition: background-color 0.25s;
   position: absolute;
+  background-color:    #C7EF00   ;
 }
 iframe  {
   width: 100%;
@@ -225,6 +230,7 @@ iframe  {
 }
 
 .overview {
+  color: black;
   display: block;
   height: fit-content;
   max-height: 55vh;
@@ -269,22 +275,10 @@ iframe  {
   }
   .button {
     font-size: 2vw;
-    user-select: none;
-    display: inline-block;
-    text-align: center;
-    background-color: transparent;
-    color: white;
+    border: 1px solid black;
     padding: 1vw;
-    border: 1px solid white;
     width: fit-content;
-    transition: all 0.25s;
     margin: 5px 5px 0 auto;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    right: unset;
-    font-family: "Lexend";
-    font-weight: 700;
   }
 
   .overview {

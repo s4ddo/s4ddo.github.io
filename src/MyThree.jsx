@@ -3,7 +3,7 @@ import {Canvas, useFrame} from "@react-three/fiber";
 import * as THREE from 'three'
 import {Environment, PerspectiveCamera, SpotLight, Text, useGLTF} from "@react-three/drei";
 import {Sections, useGlobalState} from "./GlobalState.jsx"; // UX STUFF
-import {EffectComposer, Noise, Scanline, ChromaticAberration} from "@react-three/postprocessing";
+import {EffectComposer, Noise, Scanline, Vignette,ChromaticAberration} from "@react-three/postprocessing";
 import {BlendFunction} from "postprocessing";
 
 function Box({
@@ -64,13 +64,15 @@ function Box({
             >
                 <meshStandardMaterial
                     {...materials[mesh]}
-                    color={hovered? "yellow" : "white"}
+                    color={hovered? "cyan" : "white"}
                 />
 
             </mesh>
             <Text
                 position={[0, -1, 0]}
-                color="white"
+                color={hovered? "cyan" : "black"}
+                emissionIntensity={1}
+                emissive = {hovered? "cyan" : "black"}
                 fontSize={0.15}
                 letterSpacing={-0.05}
                 font={"/alagard.ttf"}
@@ -129,7 +131,7 @@ function Scene() {
 
     return (
         <>
-            <ambientLight intensity={0.5}/>
+            <ambientLight intensity={3} color={"pink"}/>
 
 
             <Environment
@@ -163,7 +165,7 @@ function Scene() {
                 meshRef={(el) => (cubeRefs.current[Sections.GraphicDesign] = el)}
                 onClick={() => cubeFunc(Sections.GraphicDesign)}
                 text={Sections.GraphicDesign}
-                position={[2, 2, -5]}
+                position={[2.7, 0, -5]}
                 mesh_color={"red"}
                 mesh={"paper"}
                 light={currentSection === Sections.GraphicDesign}
@@ -172,7 +174,7 @@ function Scene() {
                 meshRef={(el) => (cubeRefs.current[Sections.Programming] = el)}
                 onClick={() => cubeFunc(Sections.Programming)}
                 text={Sections.Programming}
-                position={[-2.5, 2, -5]}
+                position={[-2.7, 0, -5]}
                 mesh_color={"cyan"}
                 mesh={"computer"}
                 light={currentSection === Sections.Programming}
@@ -186,6 +188,9 @@ function Scene() {
             {/*  mesh_color={"orange"}*/}
             {/*/>*/}
             <EffectComposer multisampling={0.1}>
+                {/*<ChromaticAberration*/}
+                {/*    offset={[0.001,0.001]} // chromatic aberration offset*/}
+                {/*/>*/}
 
                 <Scanline
                     blendFunction={BlendFunction.OVERLAY} // blend mode
