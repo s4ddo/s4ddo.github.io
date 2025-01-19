@@ -35,7 +35,7 @@ export function PictureGallery({ folder }) {
                     key={index}
                     src={src}
                     alt={`Gallery image ${index + 1}`}
-                    style={{ width: 'fit-content', height: '230px', margin: '10px', objectFit: 'cover' }}
+                    className="my_image"
                 />
             ))}
         </div>
@@ -77,7 +77,7 @@ export function GalleryGenerator({folder = 'posters'}){
                     key={index}
                     src={src}
                     alt={`Gallery image ${index + 1}`}
-                    style={{ width: 'fit-content', height: '230px', margin: '10px', objectFit: 'cover' }}
+                    className="my_image"
                 />
             ))}
         </div>

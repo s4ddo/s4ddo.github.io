@@ -6,10 +6,22 @@ import { GlobalProvider, useGlobalState, Sections } from "./GlobalState.jsx";// 
 
 
 export function Intro(){
+    const fonts = ['GothamBlack', 'Alagard', 'DM Serif Text']; // List of fonts
+    const [currentFontIndex, setCurrentFontIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentFontIndex((prevIndex) => (prevIndex + 1) % fonts.length); // Cycle through fonts
+        }, 500); // Change every 1 second
+        return () => clearInterval(interval); // Clean up the interval on component unmount
+    }, [fonts.length]);
 
     return (
         <div className='titleBox'>
-            <h1 className="fadein title">s4ddo's</h1>
+            <h1 className="fadein title"
+                style={{ fontFamily: fonts[currentFontIndex] }}>
+                    s4ddo's
+            </h1>
             <h3 className="fadein title">portfolio</h3>
         </div>
     );
@@ -25,7 +37,7 @@ function AppContent(){
     };
 
     return (
-        <div style={{width: "100%", height: "100%"}} onMouseMove={handleMouseMove}>
+        <div style={{width: "100%", height: "100%", display: "flex", justifyContent:"center", alignItems: "center"}} onMouseMove={handleMouseMove}>
             {(currentSection !== Sections.Intro) && <PopUp />}
             {(currentSection === Sections.Intro) && <Intro/>}
             <ThreeCanvas />

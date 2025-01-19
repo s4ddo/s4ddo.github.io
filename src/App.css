@@ -1,7 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poor+Story&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lexend:wght@100..900&family=Poor+Story&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Prata&display=swap");
+@font-face {
+  font-family: 'GothamBlack';
+  src: url('/GothamBlack.ttf') format('truetype');
+}
 
+@font-face {
+  font-family: 'Alagard';
+  src: url('/alagard.ttf') format('truetype');
+}
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -102,12 +110,13 @@
 }
 
 .button {
+  font-size: 15px;
   user-select: none;
   display: inline-block;
   text-align: center;
   background-color: transparent;
   color: white;
-  padding: 10px;
+  padding: 1vh;
   border: 2px solid white;
   width: fit-content;
   transition: all 0.25s;
@@ -125,7 +134,6 @@
 }
 .button.right {
   left: unset;
-  margin: 10px auto 0 10px;
 }
 
 .button:hover {
@@ -137,8 +145,8 @@
   display: inline-block;
   position: absolute;
   top: 15%;
-  width: 50%;
-  height: fit-content;
+  width: 70vh;
+  height: 100vh;
   max-height: 75vh;
   padding: 50px;
   background: transparent;
@@ -146,21 +154,29 @@
   margin: 0;
   box-sizing: border-box;
   text-align: left;
-  left: 10%;
   right: unset;
   color: white;
   overflow: hidden;
+  margin-right: 50vh; /* Offset by 50px */
 }
 
 .popup.right {
-  right: 5%;
-  left: unset;
+  margin-right: unset; /* Offset by 50px */
+  margin-left: 50vh; /* Offset by 50px */
+
 }
 
 h1 {
-  font-size: 5vw;
+  font-size: 90px;
   margin-bottom: 0;
   margin-top: 20px;
+}
+
+.my_image {
+  width: fit-content;
+  height: 230px;
+  margin: 10px;
+  object-fit: cover;
 }
 
 .imageContainer {
@@ -178,11 +194,11 @@ h1 {
 h3 {
   margin-top: 0;
   font-family: "Prata", serif;
-  font-size: 1.5vw;
+  font-size: 20px;
 }
 
 p {
-  font-size: 1vw;
+  font-size: 15px;
   font-family: "Lexend";
   font-weight: 200;
 }
@@ -198,4 +214,95 @@ a {
 
 a:hover {
   color: white;
+}
+
+.my_canvas {
+  position: absolute;
+}
+iframe  {
+  width: 100%;
+  height: 250px;
+}
+
+.overview {
+  display: block;
+  height: fit-content;
+  max-height: 55vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 10px;
+  }
+  a {
+    font-size: 10px;
+  }
+  .popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: unset;
+    width: 80vw;
+    height: 100vw;
+    max-height: 100vw;
+    margin-right: 35vw;
+  }
+  .popup.right {
+    margin-right: unset; /* Offset by 50px */
+    margin-left: 35vw; /* Offset by 50px */
+
+  }
+
+
+  iframe {
+    width: 100%;
+    height: 140px;
+  }
+
+  p {
+    font-size: 10px;
+  }
+  .button {
+    font-size: 2vw;
+    user-select: none;
+    display: inline-block;
+    text-align: center;
+    background-color: transparent;
+    color: white;
+    padding: 1vw;
+    border: 1px solid white;
+    width: fit-content;
+    transition: all 0.25s;
+    margin: 5px 5px 0 auto;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: unset;
+    font-family: "Lexend";
+    font-weight: 700;
+  }
+
+  .overview {
+    max-height: 55vw;
+  }
+  .imageContainer {
+    justify-content: left;
+    height: min-content;
+    max-height: 55vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-top: 10px;
+    align-content: start;
+  }
+  .my_image {
+    width: fit-content;
+    height: 17vw;
+    margin: 1px;
+    object-fit: cover;
+  }
 }

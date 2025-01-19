@@ -17,7 +17,7 @@ export function BackButton({ text }) {
 
   const onClick = () => {
     setCurrentSection(Sections.Intro);
-    setCurrentTarget({ x: 0, y: 0, z: 5 });
+    setCurrentTarget({ x: 0, y: 0, z: 0 });
   };
 
   return (
@@ -72,15 +72,7 @@ export function BasicOverview({
   domElement = () => <></>,
 }) {
   return (
-    <div
-      style={{
-        display: "block",
-        height: "fit-content",
-        maxHeight: "55vh",
-        overflowY: "auto",
-        overflowX: "hidden",
-      }}
-    >
+    <div class="overview" >
       <h1>{title}</h1>
       <h3>{subtitle}</h3>
       <a href={sub_subtitle}>{sub_subtitle}</a>

@@ -13,7 +13,7 @@ export const Sections = {
 
 export const GlobalProvider = ({ children }) => {
     const [globalIntro, setGlobalIntro]  = useState(true);
-    const [currentTarget, setCurrentTarget] = useState({x:0, y: 0, z: 5 });
+    const [currentTarget, setCurrentTarget] = useState({x:0, y: 0, z: 0 });
 
     const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
