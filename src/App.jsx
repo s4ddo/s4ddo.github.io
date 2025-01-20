@@ -25,7 +25,7 @@ export function Intro(){
             }} src={"/cat-spinning.gif"} />
 
             <img style={{
-                height: "100px",
+                width: "85%",
                 marginLeft: "auto",
                 marginRight: "auto",
             }} src={texts[currentTextIndex]} />
@@ -40,9 +40,9 @@ function Watermark(){
     return (
         <div style={{
             display:"flex",
+            alignSelf: "start",
             position:"absolute",
             alignItems: "center",
-            top: 0,
             width: "inherit",
             marginLeft: "10px"
         }}>
