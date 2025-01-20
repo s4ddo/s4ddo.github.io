@@ -32,7 +32,7 @@ function Box({
 
         clock.time += delta;
         const bobHeight = Math.sin(clock.time * 2) * 0.2; // Adjust 0.05 to change bob height
-        localGroupRef.current.position.y = og_y + bobHeight;
+        localRef.current.position.y = og_y + bobHeight;
     });
 
     meshRef(localGroupRef.current);
@@ -47,7 +47,7 @@ function Box({
                 attenuation={4.5}
                 intensity={100}
                 anglePower={0.3}
-                opacity={0.01}
+                opacity={0.5}
                 position={[0, 3.5, 0]}
                 target={target}
             />}
@@ -64,7 +64,6 @@ function Box({
             >
                 <meshStandardMaterial
                     {...materials[mesh]}
-                    color={hovered? "cyan" : "white"}
                 />
 
             </mesh>

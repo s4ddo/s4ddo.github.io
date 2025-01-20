@@ -22,7 +22,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: white;
+  background: black;
 }
 
 /* Handle on hover */
@@ -88,15 +88,12 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  height: 25vh;
+  height: fit-content;
   width: 50vh;
   align-content: center;
   justify-content: center;
   opacity: 1;
   transition: all 1s;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .titleBox.disabled {
@@ -171,7 +168,7 @@
 }
 
 h1 {
-  font-size: 90px;
+  font-size: 60px;
   margin-bottom: 0;
   margin-top: 20px;
 }

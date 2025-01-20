@@ -6,28 +6,50 @@ import { GlobalProvider, useGlobalState, Sections } from "./GlobalState.jsx";// 
 
 
 export function Intro(){
-    const fonts = ['GothamBlack', 'Alagard', 'DM Serif Text']; // List of fonts
-    const [currentFontIndex, setCurrentFontIndex] = useState(0);
+    const texts = ['/titles/0.png', '/titles/1.png', '/titles/2.png', '/titles/3.png', '/titles/4.png']; // List of fonts
+    const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrentFontIndex((prevIndex) => (prevIndex + 1) % fonts.length); // Cycle through fonts
+            setCurrentTextIndex((prevIndex) => (prevIndex + 1) % texts.length); // Cycle through fonts
         }, 400); // Change every 1 second
         return () => clearInterval(interval); // Clean up the interval on component unmount
-    }, [fonts.length]);
+    }, [texts.length]);
 
     return (
-        <div className='titleBox'>
+        <div className='fadein titleBox'>
             <img style={{
                 width: "20%",
                 marginLeft: "auto",
                 marginRight: "auto",
             }} src={"/cat-spinning.gif"} />
-            <h1 className="fadein title"
-                style={{ fontFamily: fonts[currentFontIndex], lineHeight: 1}}>
-                    s4ddo's
-            </h1>
-            <h3 className="fadein title">portfolio</h3>
+
+            <img style={{
+                height: "100px",
+                marginLeft: "auto",
+                marginRight: "auto",
+            }} src={texts[currentTextIndex]} />
+
+            <h3 style={{fontFamily: "Alagard"}} className="title">'s portfolio</h3>
+        </div>
+    );
+}
+
+
+function Watermark(){
+    return (
+        <div style={{
+            display:"flex",
+            position:"absolute",
+            alignItems: "center",
+            top: 0,
+            width: "inherit",
+            marginLeft: "10px"
+        }}>
+            <img style={{
+                width: "5%",
+            }} src={"/cat.png"} />
+            <p style={{fontFamily: "GothamBlack", color: "magenta"}}>a s4ddo original</p>
         </div>
     );
 }
@@ -42,10 +64,13 @@ function AppContent(){
     };
 
     return (
-        <div style={{width: "100%", height: "100%", display: "flex", justifyContent:"center", alignItems: "center"}} onMouseMove={handleMouseMove}>
+        <div style={{width: "inherit", height: "inherit", display: "flex", justifyContent:"center", alignItems: "center"}} onMouseMove={handleMouseMove}>
+
             {(currentSection !== Sections.Intro) && <PopUp />}
             {(currentSection === Sections.Intro) && <Intro/>}
+
             <ThreeCanvas />
+            <Watermark />
         </div>
     );
 }
@@ -53,7 +78,7 @@ function AppContent(){
 
 function App() {
     return (
-        <GlobalProvider style={{width: "100%", height: "100%"}}>
+        <GlobalProvider style={{width: "inherit", height: "inherit"}}>
             <AppContent />
         </GlobalProvider>
     );
