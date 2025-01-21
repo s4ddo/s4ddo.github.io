@@ -73,11 +73,12 @@ function Box({
                     distance={6}
                     angle={1}
                     attenuation={4.5}
-                    intensity={100}
+                    intensity={200}
                     anglePower={0.3}
-                    opacity={0.5}
+                    opacity={0.2}
                     position={[0, 3.5, 0]}
                     target={target}
+                    color={"pink"}
                 />}
 
                 <primitive object={target} position={[0, -1, 0]}/>
@@ -159,7 +160,8 @@ function Scene() {
 
     return (
         <>
-            <ambientLight intensity={3} color={"pink"}/>
+            <directionalLight intensity={2} color={"white"}/>
+            <ambientLight intensity={2} color={"white"}/>
 
 
             <Environment
