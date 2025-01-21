@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import {Canvas, useFrame} from "@react-three/fiber";
 import * as THREE from 'three'
-import {PivotControls ,DragControls, Environment, PerspectiveCamera, SpotLight, Text, useGLTF} from "@react-three/drei";
+import {DragControls, Environment, PerspectiveCamera, SpotLight, Text, useGLTF} from "@react-three/drei";
 import {Sections, useGlobalState} from "./GlobalState.jsx"; // UX STUFF
 import {EffectComposer, Noise, Scanline} from "@react-three/postprocessing";
 import {BlendFunction} from "postprocessing";
@@ -9,9 +9,9 @@ import {BlendFunction} from "postprocessing";
 function Box({
                  meshRef,
                  onClick,
-                 position = [0, 0, 0],
+                 pos = [0, 0, 0],
+                 lineheight = 1,
                  text,
-                 props,
                  light = false,
                  mesh = "paper"
              }) {
@@ -23,11 +23,14 @@ function Box({
     const [clock] = useState(() => ({time: 0}));
     const [target] = useState(() => new THREE.Object3D())
     const [dragging, setDragging] = useState(false);
-    const [currentPosition, setCurrentPosition] = React.useState(new THREE.Vector3(position[0], position[1], position[2])); // Initial position
+
+    // Positions
+    const [currentPosition, setCurrentPosition] = React.useState(pos); // Initial position
+    const [changedPosition, setChangedPosition] = React.useState(pos); // Initial position
+
+
     const localRef = useRef();
     const localGroupRef = useRef()
-    const localControlRef = useRef()
-    const og_y = position[1];
 
     useFrame((state, delta) => {
         //rotate the mesh around the y-axis
@@ -36,36 +39,74 @@ function Box({
 
         clock.time += delta;
         const bobHeight = Math.sin(clock.time * 2) * 0.2; // Adjust 0.05 to change bob height
-        localRef.current.position.y = og_y + bobHeight;
+        localRef.current.position.y = 0 + bobHeight;
 
     });
 
-    const matrix = new THREE.Matrix4().makeTranslation(currentPosition);
     const clickFunction = () => {
         if (dragging) {
             setDragging(false);
             return;
         }
 
-        setCurrentTarget(currentPosition);
+        setCurrentTarget({x: currentPosition[0], y: currentPosition[1], z: currentPosition[2]});
 
         onClick()
     }
     meshRef(localGroupRef.current);
     return (
-        <DragControls
-            matrix={matrix}
-            onDragStart={() => setDragging(true)}
-            onDragEnd={() => setDragging(false)}
-            onDrag={(l, dl, w, dw) => {
-                const position = new THREE.Vector3()
-                const rotation = new THREE.Quaternion()
-                w.decompose(position, rotation, new THREE.Vector3());
-                setCurrentPosition(position)
-            }}
-        >
+            <group ref={localGroupRef} position={changedPosition}>
+                <Text
+                    position={[0,lineheight,0]}
+                    color={dragging ? "yellow" : (hovered ? "cyan" : "black")}
+                    emissionIntensity={1}
+                    emissive={dragging ? "yellow" : (hovered ? "cyan" : "black")}
+                    fontSize={0.25}
+                    letterSpacing={0}
+                    font={"/alagard.ttf"}
+                >
+                    {text}
+                </Text>
 
-            <group ref={localGroupRef}>
+
+
+                <DragControls
+                    autoTransform={false}
+                    onDragStart={() => {
+                        setDragging(true)
+                        const postion_copy = [...changedPosition];
+                        setCurrentPosition(postion_copy);
+                    }}
+                    onDragEnd={() => {
+                        setDragging(false)
+                        const postion_copy = [...changedPosition];
+                        setCurrentPosition(postion_copy);
+                    }}
+                    onDrag={(l, _, w) => {
+                        const pos = new THREE.Vector3();
+                        const rot = new THREE.Quaternion();
+
+                        l.decompose(pos, rot, new THREE.Vector3());
+                        const finalPos = [currentPosition[0] + pos.x, currentPosition[1] + pos.y, -5];
+                        setChangedPosition(finalPos);
+                    }}
+                >
+                    <mesh
+                        scale={0.25}
+                        ref={localRef}
+                        onClick={clickFunction}
+                        onPointerOver={() => setHover(true)}
+                        onPointerOut={() => setHover(false)}
+                        geometry={nodes[mesh]?.geometry} // Use dynamic bracket notation
+                    >
+                        <meshStandardMaterial
+                            {...materials[mesh]}
+                            color={dragging ? "yellow" : (hovered ? "cyan" : "white")}
+                        />
+
+                    </mesh>
+                </DragControls>
+
 
                 {(light) && <SpotLight
                     radiusTop={0}
@@ -82,34 +123,9 @@ function Box({
                 />}
 
                 <primitive object={target} position={[0, -1, 0]}/>
-                <mesh
-                    {...props}
-                    scale={0.25}
-                    ref={localRef}
-                    onClick={clickFunction}
-                    onPointerOver={() => setHover(true)}
-                    onPointerOut={() => setHover(false)}
-                    geometry={nodes[mesh]?.geometry} // Use dynamic bracket notation
-                >
-                    <meshStandardMaterial
-                        {...materials[mesh]}
-                        color={dragging ? "yellow" : (hovered ? "cyan" : "white")}
-                    />
 
-                </mesh>
-                <Text
-                    position={[0, -1, 0]}
-                    color={dragging ? "yellow" : (hovered ? "cyan" : "black")}
-                    emissionIntensity={1}
-                    emissive={dragging ? "yellow" : (hovered ? "cyan" : "black")}
-                    fontSize={0.15}
-                    letterSpacing={-0.05}
-                    font={"/alagard.ttf"}
-                >
-                    {text}
-                </Text>
+
             </group>
-        </DragControls>
     );
 }
 
@@ -148,7 +164,6 @@ function Scene() {
             Math.abs(currentTarget.y - camera.y) < 0.01 &&
             Math.abs(currentTarget.z / 3 - camera.z) < 0.01
         ) {
-            console.log("You've reached the target!");
             return;
         }
         const speed = 0.05;
@@ -195,20 +210,33 @@ function Scene() {
                 meshRef={(el) => (cubeRefs.current[Sections.GraphicDesign] = el)}
                 onClick={() => cubeFunc(Sections.GraphicDesign)}
                 text={Sections.GraphicDesign}
-                position={[2.7, 0, -5]}
+                pos={[2.7, 1.75, -5]}
                 mesh_color={"red"}
                 mesh={"paper"}
                 light={currentSection === Sections.GraphicDesign}
+                lineheight={-0.5}
             />
             <Box
                 meshRef={(el) => (cubeRefs.current[Sections.Programming] = el)}
                 onClick={() => cubeFunc(Sections.Programming)}
                 text={Sections.Programming}
-                position={[-2.7, 0, -5]}
+                pos={[-2.7, -1.5, -5]}
                 mesh_color={"cyan"}
                 mesh={"computer"}
                 light={currentSection === Sections.Programming}
+                lineheight={-1}
 
+
+            />
+            <Box
+                meshRef={(el) => (cubeRefs.current[Sections.Animations] = el)}
+                onClick={() => cubeFunc(Sections.Animations)}
+                lineheight={-0.65}
+                text={Sections.Animations}
+                pos={[-2.7, 1.75, -5]}
+                mesh_color={"cyan"}
+                mesh={"camera"}
+                light={currentSection === Sections.Animations}
             />
             {/*<Box*/}
             {/*  meshRef={(el) => (cubeRefs.current[Sections.General] = el)}*/}

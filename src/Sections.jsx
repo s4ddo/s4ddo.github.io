@@ -1,6 +1,6 @@
 import {Sections, useGlobalState} from "./GlobalState.jsx";
 import {Picture, PictureGallery, GalleryGenerator, NewGalleryGen} from "./Pictures.jsx";
-import {ButtonToolbar, YouTubeEmbed, BasicOverview} from "./SectionsContent.jsx";
+import {ButtonToolbar, YouTubeEmbed, BasicOverview, IGEmbed} from "./SectionsContent.jsx";
 
 import React, {Suspense, useState, useEffect} from "react";
 
@@ -8,9 +8,12 @@ const SectionContent = {
     [Sections.GraphicDesign] : {
         Overview: () => <BasicOverview
                             title={"Graphic Design"}
-                            subtitle={"Graphic Design and Animations"}
-                            description={"A bunch of artistic projects I worked on over the years."}
-                            domElement={<YouTubeEmbed video_id={"yqFCN44x69k"}/>}/>,
+                            subtitle={"Posters, Illustrations, Logos and etc."}
+                            description={`Back in highschool I did a loooooot of work for my student council as a graphic designer.
+                            it was really fun and I got weirdly good at it. I've made posters, arts and even whole ass
+                            books for my yearbook. I probably have around 2000 hours alone in photoshop. Ironically I 
+                            still suck at it`}
+                            domElement={<Picture folder={"graphic_design"} fileName={"overview.jpg"}/>}/>,
 
         Posters: () => <GalleryGenerator folder={'posters'}/>,
         "Landscape Posters": () => <GalleryGenerator folder={'posters_landscape'}/>,
@@ -84,6 +87,27 @@ const SectionContent = {
             description={`This was a game I woked on to familiarize myself with Python before enterhing university. It 
             was really fun to make!'`}
             domElement={<PictureGallery folder={"code_projects/wordle"}/>}/>,
+    },
+
+    [Sections.Animations] : {
+        Overview: () => <BasicOverview
+            title={[Sections.Animations]}
+            subtitle={"Sigma Animations"}
+            description={`Being an animator has always been like the dream job. Nowadays I make animations as a hobby 
+            for gifts or just for fun in general. Its really theraputic although it can be really tedious at some times.`}
+            domElement={<Picture folder={"animations"} fileName={"overview.jpg"}/>}/>,
+        "The Pearl": () => <BasicOverview
+            title={"The Pearl"}
+            subtitle={"Cancelled Short Animation For a Museum"}
+            description={`One of my most favorite and recent animations that I made. I was comissioned by a student interning
+            at a museum to make an animation for them. However, it fell through but I ended up making it anyways for fun!`}
+            domElement={<YouTubeEmbed video_id={"yqFCN44x69k"}/>}/>,
+        "Valentina": () => <BasicOverview
+            title={"Valentina"}
+            subtitle={"Quick Animation for The Queen"}
+            description={`One of my most favorite and recent animations that I made. I was comissioned by a student interning
+            at a museum to make an animation for them. However, it fell through but I ended up making it anyways for fun!`}
+            />,
     },
     [Sections.General] : {
         Overview: () => <BasicOverview

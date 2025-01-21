@@ -28,6 +28,7 @@ export function Intro(){
                 width: "85%",
                 marginLeft: "auto",
                 marginRight: "auto",
+
             }} src={texts[currentTextIndex]} />
 
             <h3 style={{fontFamily: "Alagard"}} className="title">'s portfolio</h3>
