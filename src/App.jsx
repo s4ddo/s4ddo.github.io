@@ -49,7 +49,7 @@ function Watermark(){
             <img style={{
                 width: "5%",
             }} src={"/cat.png"} />
-            <p style={{fontFamily: "GothamBlack", color: "magenta"}}>a s4ddo original</p>
+            <p style={{fontFamily: "GothamBlack", color: "magenta"}}>certified s4ddo classic</p>
         </div>
     );
 }
