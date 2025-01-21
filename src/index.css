@@ -7,9 +7,14 @@ body {
     align-items: center;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
+    overscroll-behavior: none; /* Prevent overscroll behavior */
 }
 
-
+html{
+    overscroll-behavior: none; /* Prevent overscroll behavior */
+    overflow: hidden;
+}
 .main_container {
     width: 120vh;
     height: 100vh;
