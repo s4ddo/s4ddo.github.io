@@ -1,6 +1,6 @@
 import {Sections, useGlobalState} from "./GlobalState.jsx";
 import {Picture, PictureGallery, GalleryGenerator, NewGalleryGen} from "./Pictures.jsx";
-import {ButtonToolbar, YouTubeEmbed, BasicOverview, IGEmbed} from "./SectionsContent.jsx";
+import {ButtonToolbar, YouTubeEmbed, BasicOverview} from "./SectionsContent.jsx";
 
 import React, {Suspense, useState, useEffect} from "react";
 
@@ -94,7 +94,9 @@ const SectionContent = {
             title={[Sections.Animations]}
             subtitle={"Sigma Animations"}
             description={`Being an animator has always been like the dream job. Nowadays I make animations as a hobby 
-            for gifts or just for fun in general. Its really theraputic although it can be really tedious at some times.`}
+            for gifts or just for fun in general. Its really theraputic although it can be really tedious at some times. Ive left out
+            alot of the animations I made as most of them are very sketchy and unfinished. If you want to see all of them
+            hop on @s4ddo on Instagram!`}
             domElement={<Picture folder={"animations"} fileName={"overview.jpg"}/>}/>,
         "The Pearl": () => <BasicOverview
             title={"The Pearl"}
@@ -105,9 +107,26 @@ const SectionContent = {
         "Valentina": () => <BasicOverview
             title={"Valentina"}
             subtitle={"Quick Animation for The Queen"}
-            description={`One of my most favorite and recent animations that I made. I was comissioned by a student interning
-            at a museum to make an animation for them. However, it fell through but I ended up making it anyways for fun!`}
-            />,
+            description={`Small present I made for the Queen, very fun to work on and first time I tried a non tidy coloring 
+            style.`}
+            domElement={<YouTubeEmbed video_id={"aTfgbwh7eEo"}/>}/>,
+        "C-Fex": () => <BasicOverview
+            title={"C-Fex"}
+            subtitle={"Analog Horror Short Animation"}
+            description={`An analog horror project I started at 9th grade ish when I was so inspirted by the growing analog
+            horror scene in the internet. I really wanted to make my own ARG lol`}
+            domElement={<YouTubeEmbed video_id={"vBuomPbGKXw"}/>}/>,
+        "Bike Girl": () => <BasicOverview
+            title={"Bike Girl"}
+            subtitle={"A Girl Biking Short Anim"}
+            description={`Very old animation wanted to play with compositing.`}
+            domElement={<YouTubeEmbed video_id={"P7M5wOvDIzI"}/>}/>,
+        "Sleepy Dude": () => <BasicOverview
+            title={"Sleepy Dude"}
+            subtitle={"a sleep guy?"}
+            description={`Not much to say about it lol`}
+            domElement={<YouTubeEmbed video_id={"9SiwRSoHxUo"}/>}/>,
+
     },
     [Sections.General] : {
         Overview: () => <BasicOverview

@@ -3,7 +3,7 @@ import {Canvas, useFrame} from "@react-three/fiber";
 import * as THREE from 'three'
 import {DragControls, Environment, PerspectiveCamera, SpotLight, Text, useGLTF} from "@react-three/drei";
 import {Sections, useGlobalState} from "./GlobalState.jsx"; // UX STUFF
-import {EffectComposer, Noise, Scanline} from "@react-three/postprocessing";
+import {EffectComposer, Noise, ChromaticAberration, Scanline} from "@react-three/postprocessing";
 import {BlendFunction} from "postprocessing";
 
 function Box({
@@ -58,9 +58,9 @@ function Box({
             <group ref={localGroupRef} position={changedPosition}>
                 <Text
                     position={[0,lineheight,0]}
-                    color={dragging ? "yellow" : (hovered ? "cyan" : "black")}
+                    color={dragging ? "yellow" : (hovered ? "cyan" : (light) ? "white" : "black")}
                     emissionIntensity={1}
-                    emissive={dragging ? "yellow" : (hovered ? "cyan" : "black")}
+                    emissive={dragging ? "yellow" : (hovered ? "cyan" : (light) ? "white" : "black")}
                     fontSize={0.25}
                     letterSpacing={0}
                     font={"/alagard.ttf"}
@@ -116,10 +116,10 @@ function Box({
                     attenuation={4.5}
                     intensity={200}
                     anglePower={0.3}
-                    opacity={0.2}
+                    opacity={0.1}
                     position={[0, 3.5, 0]}
                     target={target}
-                    color={"pink"}
+                    color={"mediumpurple"}
                 />}
 
                 <primitive object={target} position={[0, -1, 0]}/>
@@ -175,8 +175,16 @@ function Scene() {
 
     return (
         <>
-            <directionalLight intensity={2} color={"white"}/>
-            <ambientLight intensity={2} color={"white"}/>
+
+            {
+                currentSection == Sections.Intro &&
+                <>
+                <directionalLight intensity={2} color={"white"}/>
+                <ambientLight intensity={2} color={"white"}/>
+                </>
+            }
+
+
 
 
             <Environment
@@ -254,7 +262,7 @@ function Scene() {
                     blendFunction={BlendFunction.OVERLAY} // blend mode
                     density={1.25} // scanline density
                 />
-                <Noise opacity={0.25}/>
+                <Noise opacity={0.15}/>
             </EffectComposer>
         </>
     );
@@ -262,8 +270,9 @@ function Scene() {
 
 
 export function ThreeCanvas() {
+    const { currentSection } = useGlobalState();
     return (
-        <Canvas className="my_canvas">
+        <Canvas style={{background: (currentSection != Sections.Intro ? "black" : "mediumpurple")}} className="my_canvas">
             <Scene/>
         </Canvas>
     );

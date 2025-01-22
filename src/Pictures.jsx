@@ -12,6 +12,7 @@ export function NewGalleryGen({folder}){
 export function PictureGallery({ folder }) {
     const [images, setImages] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [currentImage, setCurrentImage] = useState(-1);
 
 
     useEffect(() => {
@@ -28,23 +29,44 @@ export function PictureGallery({ folder }) {
     }, [folder]);
 
     return (
-        <div className="imageContainer">
-            {isLoading && <div>Loading...</div>  }
-            {!isLoading && images.map((src, index) => (
-                <img
-                    key={index}
-                    src={src}
-                    alt={`Gallery image ${index + 1}`}
-                    className="my_image"
+        <>
+            <div className="imageContainer">
+                {isLoading && <div>Loading...</div>  }
+                {!isLoading && images.map((src, index) => (
+                    <img
+                        key={index}
+                        src={src}
+                        alt={`Gallery image ${index + 1}`}
+                        className="my_image"
+                        onClick={() => setCurrentImage(index)}
+
+                    />
+                ))}
+            </div>
+
+            {currentImage != -1 &&
+                <ImagePopup
+                    close = {() => setCurrentImage(-1)}
+                    back = {() => {
+                        if (currentImage - 1 > -1)
+                            setCurrentImage(currentImage - 1)
+                    }}
+                    forward = {() => {
+                        if (currentImage + 1 < images.length)
+                            setCurrentImage(currentImage + 1)
+                    }}
+                    src = {images[currentImage]}
+
                 />
-            ))}
-        </div>
+            }
+        </>
     );
 }
 
 
 export function GalleryGenerator({folder = 'posters'}){
     const [images, setImages] = useState([]);
+    const [currentImage, setCurrentImage] = useState(-1);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -68,18 +90,79 @@ export function GalleryGenerator({folder = 'posters'}){
         loadImages();
     }, [folder]);
 
+    return (
+        <>
+            <div className="imageContainer">
+                {isLoading && <div>Loading...</div>}
+                {!isLoading && images.map((src, index) => (
+                    <img
+                        key={index}
+                        src={src}
+                        alt={`Gallery image ${index + 1}`}
+                        className="my_image"
+                        onClick={() => setCurrentImage(index)}
+                    />
+                ))}
+
+
+            </div>
+            {currentImage != -1 &&
+                <ImagePopup
+                    close = {() => setCurrentImage(-1)}
+                    back = {() => {
+                        if (currentImage - 1 > -1)
+                            setCurrentImage(currentImage - 1)
+                    }}
+                    forward = {() => {
+                        if (currentImage + 1 < images.length)
+                            setCurrentImage(currentImage + 1)
+                    }}
+                    src = {images[currentImage]}
+
+                />
+
+            }
+        </>
+
+);
+}
+
+function ImagePopup({close ,back ,forward ,src }){
+    return (
+        <div className="big_image">
+            <div
+                className={`button custom`}
+                onClick={close}
+            >
+                X
+            </div>
+
+            <div>
+                <div
+                    className={`button custom centered`}
+                    onClick={back}
+                >
+                    {"<"}
+                </div>
+                <div
+                    style={{right: "0", left: "unset"}}
+                    className={`button custom centered`}
+                    onClick={forward}
+                >
+                    {">"}
+                </div>
+            </div>
+            <Image src = {src}/>
+        </div>
+
+    )
+}
+
+function Image({src}){
 
     return (
-        <div className="imageContainer">
-            {isLoading && <div>Loading...</div>}
-            {!isLoading && images.map((src, index) => (
-                <img
-                    key={index}
-                    src={src}
-                    alt={`Gallery image ${index + 1}`}
-                    className="my_image"
-                />
-            ))}
-        </div>
-    );
+        <img src={src} alt="Image"  style={{height: "100%",
+            width: "100%",
+            objectFit: "contain",}} />
+    )
 }

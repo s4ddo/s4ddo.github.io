@@ -117,9 +117,9 @@
   display: inline-block;
   text-align: center;
   background-color: transparent;
-  color: black;
+  color: white;
   padding: 1vh;
-  border: 2px solid black;
+  border: 2px solid white;
   width: fit-content;
   transition: all 0.25s;
   margin: 10px 10px 0 auto;
@@ -131,16 +131,25 @@
   font-weight: 700;
 }
 .button.active {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
 }
 .button.right {
   left: unset;
 }
 
+.button.custom {
+  margin-left: 10px;
+  position: absolute;
+}
+
+.button.custom.centered{
+  top: 50%;
+  transform: translateY(-50%);
+}
 .button:hover {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 .popup {
@@ -179,6 +188,19 @@ h1 {
   height: 170px;
   margin: 1px;
   object-fit: cover;
+}
+.my_image:hover {
+  filter: brightness(170%);
+  border: 1px solid white;
+}
+.big_image {
+  width: 90%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background: black;
+  display: flex;
+  justifyContent: center
 }
 
 .imageContainer {
@@ -229,7 +251,7 @@ iframe  {
 }
 
 .overview {
-  color: black;
+  color: white;
   display: block;
   height: fit-content;
   max-height: 55vh;
