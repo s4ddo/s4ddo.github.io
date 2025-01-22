@@ -17,7 +17,7 @@ function Box({
              }) {
 
     const {nodes, materials} = useGLTF(`/models/${mesh}.glb`);
-    const {setCurrentTarget} = useGlobalState()
+    const {setCurrentTarget, currentSection} = useGlobalState()
 
     const [hovered, setHover] = useState(false);
     const [clock] = useState(() => ({time: 0}));
@@ -58,9 +58,9 @@ function Box({
             <group ref={localGroupRef} position={changedPosition}>
                 <Text
                     position={[0,lineheight,0]}
-                    color={dragging ? "yellow" : (hovered ? "cyan" : (light) ? "white" : "black")}
+                    color={dragging ? "yellow" : (hovered ? "cyan" : (!light && currentSection !== Sections.Intro) ? "black" : "white")}
                     emissionIntensity={1}
-                    emissive={dragging ? "yellow" : (hovered ? "cyan" : (light) ? "white" : "black")}
+                    emissive={dragging ? "yellow" : (hovered ? "cyan" : (!light && currentSection !== Sections.Intro) ? "black" : "white")}
                     fontSize={0.25}
                     letterSpacing={0}
                     font={"/alagard.ttf"}
@@ -71,6 +71,7 @@ function Box({
 
 
                 <DragControls
+                    axisLock={"z"}
                     autoTransform={false}
                     onDragStart={() => {
                         setDragging(true)
@@ -218,7 +219,7 @@ function Scene() {
                 meshRef={(el) => (cubeRefs.current[Sections.GraphicDesign] = el)}
                 onClick={() => cubeFunc(Sections.GraphicDesign)}
                 text={Sections.GraphicDesign}
-                pos={[2.7, 1.75, -5]}
+                pos={[2.25, 1.75, -5]}
                 mesh_color={"red"}
                 mesh={"paper"}
                 light={currentSection === Sections.GraphicDesign}
@@ -228,7 +229,7 @@ function Scene() {
                 meshRef={(el) => (cubeRefs.current[Sections.Programming] = el)}
                 onClick={() => cubeFunc(Sections.Programming)}
                 text={Sections.Programming}
-                pos={[-2.7, -1.5, -5]}
+                pos={[-2.25, -1.5, -5]}
                 mesh_color={"cyan"}
                 mesh={"computer"}
                 light={currentSection === Sections.Programming}
@@ -241,7 +242,7 @@ function Scene() {
                 onClick={() => cubeFunc(Sections.Animations)}
                 lineheight={-0.65}
                 text={Sections.Animations}
-                pos={[-2.7, 1.75, -5]}
+                pos={[-2.25, 1.75, -5]}
                 mesh_color={"cyan"}
                 mesh={"camera"}
                 light={currentSection === Sections.Animations}
@@ -254,9 +255,9 @@ function Scene() {
             {/*  mesh_color={"orange"}*/}
             {/*/>*/}
             <EffectComposer multisampling={0.1}>
-                {/*<ChromaticAberration*/}
-                {/*    offset={[0.001,0.001]} // chromatic aberration offset*/}
-                {/*/>*/}
+                <ChromaticAberration
+                    offset={[0.002,0.002]} // chromatic aberration offset
+                />
 
                 <Scanline
                     blendFunction={BlendFunction.OVERLAY} // blend mode
