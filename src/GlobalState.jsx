@@ -9,6 +9,7 @@ export const Sections = {
     GraphicDesign : "Graphic Design",
     Programming : "Code Projects",
     Animations: "Animations",
+    Games: "Games",
     General: "General"
 }
 

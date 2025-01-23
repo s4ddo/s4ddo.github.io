@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 
-export function Picture({ folder, fileName }) {
+export function Picture({ folder, fileName, width = "100%"}) {
     const image = `./${folder}/${fileName}`
 
-    return <img src={image} style={{width: "100%"}} alt="Loaded content" />;
+    return <img src={image} style={{width: width}} alt="Loaded content" />;
 }
 
 export function NewGalleryGen({folder}){

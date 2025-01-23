@@ -1,49 +1,49 @@
 {
-  "hash": "cbe7a58d",
-  "configHash": "7f536fc6",
-  "lockfileHash": "a2939921",
-  "browserHash": "ccdef488",
+  "hash": "b662ebc9",
+  "configHash": "e744e652",
+  "lockfileHash": "e5029a68",
+  "browserHash": "c5813014",
   "optimized": {
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "7085ce7a",
+      "fileHash": "37a8422e",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "01cb2d74",
+      "fileHash": "5721c0e6",
       "needsInterop": true
     },
     "@react-three/fiber": {
       "src": "../../node_modules/@react-three/fiber/dist/react-three-fiber.esm.js",
       "file": "@react-three_fiber.js",
-      "fileHash": "39beccea",
+      "fileHash": "0d1f7b58",
       "needsInterop": false
     },
     "three": {
       "src": "../../node_modules/three/build/three.module.js",
       "file": "three.js",
-      "fileHash": "e010ab32",
+      "fileHash": "07c927db",
       "needsInterop": false
     },
     "@react-three/drei": {
       "src": "../../node_modules/@react-three/drei/index.js",
       "file": "@react-three_drei.js",
-      "fileHash": "73d00d00",
+      "fileHash": "8bdaa5b6",
       "needsInterop": false
     },
     "@react-three/postprocessing": {
       "src": "../../node_modules/@react-three/postprocessing/dist/index.js",
       "file": "@react-three_postprocessing.js",
-      "fileHash": "c2a49c00",
+      "fileHash": "1288ddb1",
       "needsInterop": false
     },
     "postprocessing": {
       "src": "../../node_modules/postprocessing/build/index.js",
       "file": "postprocessing.js",
-      "fileHash": "420bda11",
+      "fileHash": "b33d72f5",
       "needsInterop": false
     }
   },

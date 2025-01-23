@@ -185,9 +185,6 @@ function Scene() {
                 </>
             }
 
-
-
-
             <Environment
                 background={true} // can be true, false or "only" (which only sets the background) (default: false)
                 backgroundBlurriness={0} // optional blur factor between 0 and 1 (default: 0, only works with three 0.146 and up)
@@ -247,13 +244,17 @@ function Scene() {
                 mesh={"camera"}
                 light={currentSection === Sections.Animations}
             />
-            {/*<Box*/}
-            {/*  meshRef={(el) => (cubeRefs.current[Sections.General] = el)}*/}
-            {/*  onClick={() => cubeFunc(Sections.General)}*/}
-            {/*  text={Sections.General}*/}
-            {/*  position={[-2.5, 2, -5]}*/}
-            {/*  mesh_color={"orange"}*/}
-            {/*/>*/}
+            <Box
+                meshRef={(el) => (cubeRefs.current[Sections.Games] = el)}
+                onClick={() => cubeFunc(Sections.Games)}
+                lineheight={-0.65}
+                text={Sections.Games}
+                pos={[2.25, -1.75, -5]}
+                mesh_color={"cyan"}
+                mesh={"controller"}
+                light={currentSection === Sections.Games}
+            />
+
             <EffectComposer multisampling={0.1}>
                 <ChromaticAberration
                     offset={[0.002,0.002]} // chromatic aberration offset
