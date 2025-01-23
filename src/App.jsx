@@ -43,14 +43,17 @@ function Watermark(){
             display:"flex",
             alignSelf: "start",
             position:"absolute",
-            alignItems: "center",
-            width: "inherit",
-            marginLeft: "10px"
+            alignItems: "start",
+            flexDirection: "column",
+            width: "min-content",
+            marginLeft: "10px",
+            pointerEvents: "none",
+
         }}>
             <img style={{
-                width: "5%",
+                width: "100%",
             }} src={"/cat.png"} />
-            <p style={{fontFamily: "GothamBlack", color: "white"}}>certified s4ddo classic</p>
+            <p style={{fontFamily: "GothamBlack", fontWeight: "bolder", background: "black", color: "white", margin: "0"}}>S4DDO</p>
         </div>
     );
 }
@@ -70,8 +73,25 @@ function AppContent(){
             {(currentSection !== Sections.Intro) && <PopUp />}
             {(currentSection === Sections.Intro) && <Intro/>}
 
+
             <ThreeCanvas />
-            <Watermark />
+            <div style={{
+                display: "block",
+                position: "absolute",
+                width: "inherit",
+                height: "inherit",
+                backgroundColor: "transparent",
+                border: "3px solid white",
+                boxSizing: "border-box",
+                borderRadius: "50px",
+                transform: "scale(98%)",
+                pointerEvents: "none",
+                padding: "10px",
+
+            }}>
+                <Watermark />
+
+            </div>
         </div>
     );
 }

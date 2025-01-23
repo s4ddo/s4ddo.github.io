@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useRef, useState, useMemo} from "react";
 import {Canvas, useFrame} from "@react-three/fiber";
 import * as THREE from 'three'
 import {DragControls, Environment, PerspectiveCamera, SpotLight, Text, useGLTF} from "@react-three/drei";
@@ -20,10 +20,9 @@ function Box({
     const {setCurrentTarget, currentSection} = useGlobalState()
 
     const [hovered, setHover] = useState(false);
-    const [clock] = useState(() => ({time: 0}));
     const [target] = useState(() => new THREE.Object3D())
     const [dragging, setDragging] = useState(false);
-
+    const time = useRef(0); // Track elapsed time
     // Positions
     const [currentPosition, setCurrentPosition] = React.useState(pos); // Initial position
     const [changedPosition, setChangedPosition] = React.useState(pos); // Initial position
@@ -32,13 +31,20 @@ function Box({
     const localRef = useRef();
     const localGroupRef = useRef()
 
+    const { phaseOffset } = useMemo(() => {
+        return {
+            phaseOffset: Math.random() * Math.PI * 2, // Random phase offset
+        };
+    }, []);
+
+
     useFrame((state, delta) => {
-        //rotate the mesh around the y-axis
+        time.current += delta;
 
-        localRef.current.rotation.y += 0.01;
+        const maxAngle = Math.PI / 4; // 45 degrees
+        localRef.current.rotation.y = maxAngle * Math.sin(time.current + phaseOffset ) * 0.5;
 
-        clock.time += delta;
-        const bobHeight = Math.sin(clock.time * 2) * 0.2; // Adjust 0.05 to change bob height
+        const bobHeight = Math.sin(time.current + phaseOffset * 2) * 0.2; // Adjust 0.05 to change bob height
         localRef.current.position.y = 0 + bobHeight;
 
     });
@@ -58,9 +64,9 @@ function Box({
             <group ref={localGroupRef} position={changedPosition}>
                 <Text
                     position={[0,lineheight,0]}
-                    color={dragging ? "yellow" : (hovered ? "cyan" : (!light && currentSection !== Sections.Intro) ? "black" : "white")}
+                    color={dragging ? "cyan" : (hovered ? "yellow" : (!light && currentSection !== Sections.Intro) ? "black" : "white")}
                     emissionIntensity={1}
-                    emissive={dragging ? "yellow" : (hovered ? "cyan" : (!light && currentSection !== Sections.Intro) ? "black" : "white")}
+                    emissive={dragging ? "cyan" : (hovered ? "yellow" : (!light && currentSection !== Sections.Intro) ? "black" : "white")}
                     fontSize={0.25}
                     letterSpacing={0}
                     font={"/alagard.ttf"}
@@ -93,7 +99,7 @@ function Box({
                     }}
                 >
                     <mesh
-                        scale={0.25}
+                        scale={0.4}
                         ref={localRef}
                         onClick={clickFunction}
                         onPointerOver={() => setHover(true)}
@@ -102,7 +108,7 @@ function Box({
                     >
                         <meshStandardMaterial
                             {...materials[mesh]}
-                            color={dragging ? "yellow" : (hovered ? "cyan" : "white")}
+                            color={dragging ? "cyan" : (hovered ? "yellow" : "white")}
                         />
 
                     </mesh>
@@ -110,20 +116,20 @@ function Box({
 
 
                 {(light) && <SpotLight
-                    radiusTop={0}
-                    radiusBottom={1.5}
+                    radiusTop={0.1}
+                    radiusBottom={2}
                     distance={6}
-                    angle={1}
+                    angle={0.6}
                     attenuation={4.5}
                     intensity={200}
                     anglePower={0.3}
                     opacity={0.1}
-                    position={[0, 3.5, 0]}
+                    position={[1, 3.5, 1]}
                     target={target}
-                    color={"mediumpurple"}
+                    color={"#f4ca90"}
                 />}
 
-                <primitive object={target} position={[0, -1, 0]}/>
+                <primitive object={target} position={localRef.position}/>
 
 
             </group>
@@ -157,13 +163,13 @@ function Scene() {
         const camera = cameraRef.current.position;
         let offset = 0;
         if (currentTarget.x !== 0 || currentTarget.y !== 0) {
-            offset = currentTarget.x < 0 ? 1.45 : -1.45;
+            offset = currentTarget.x < 0 ? 1.65 : -1.65;
         }
 
         if (
             Math.abs(currentTarget.x + offset - camera.x) < 0.01 &&
             Math.abs(currentTarget.y - camera.y) < 0.01 &&
-            Math.abs(currentTarget.z / 3 - camera.z) < 0.01
+            Math.abs(currentTarget.z / 5 - camera.z) < 0.01
         ) {
             return;
         }
@@ -171,7 +177,7 @@ function Scene() {
 
         camera.x += (currentTarget.x + offset - camera.x) * speed;
         camera.y += (currentTarget.y - camera.y) * speed;
-        camera.z += (currentTarget.z / 3 - camera.z) * speed;
+        camera.z += (currentTarget.z / 5 - camera.z) * speed;
     });
 
     return (
@@ -180,7 +186,7 @@ function Scene() {
             {
                 currentSection == Sections.Intro &&
                 <>
-                <directionalLight intensity={2} color={"white"}/>
+                <directionalLight intensity={2} color={"cyan"}/>
                 <ambientLight intensity={2} color={"white"}/>
                 </>
             }
@@ -230,7 +236,7 @@ function Scene() {
                 mesh_color={"cyan"}
                 mesh={"computer"}
                 light={currentSection === Sections.Programming}
-                lineheight={-1}
+                lineheight={-1.5}
 
 
             />
@@ -247,7 +253,7 @@ function Scene() {
             <Box
                 meshRef={(el) => (cubeRefs.current[Sections.Games] = el)}
                 onClick={() => cubeFunc(Sections.Games)}
-                lineheight={-0.65}
+                lineheight={-0.85}
                 text={Sections.Games}
                 pos={[2.25, -1.75, -5]}
                 mesh_color={"cyan"}
@@ -274,7 +280,7 @@ function Scene() {
 export function ThreeCanvas() {
     const { currentSection } = useGlobalState();
     return (
-        <Canvas style={{background: (currentSection != Sections.Intro ? "black" : "mediumpurple")}} className="my_canvas">
+        <Canvas className={`my_canvas ${currentSection != Sections.Intro ? "dark" : ""}`}>
             <Scene/>
         </Canvas>
     );
